@@ -1,0 +1,54 @@
+@font-face {
+    font-family: mt-medium;
+    src: url("../../assets/fonts/liberty-mt-medium-webfont.ttf");
+}
+@font-face {
+    font-family: nus-medium;
+    src: url("../../assets/fonts/liberty-nus-medium-webfont.ttf");
+}
+.headContainer{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 100%;
+    background-color: #F4F4F4;
+    z-index: 0;
+}
+
+.background{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 0px 30px 0px;
+    background-image: url("../../assets/img/Group\ 18\ \(1\).png");
+    background-size: cover;  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgb(145, 185, 184);
+}
+
+.main-text .h1Text{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 1px;
+    font-family: mt-medium;
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 2rem;
+    margin-top: 100px;
+
+}
+.span-text a{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 1);
+    font-family: mt-medium;
+    font-size: 16px;
+    line-height: 32px;
+
+    margin-top: 20px;
+}
