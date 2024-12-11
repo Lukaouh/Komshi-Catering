@@ -168,4 +168,7 @@
     .header{
         line-height: 5px;
     }
+    .title.active {
+        padding-bottom: 15px;
+    }
 }
