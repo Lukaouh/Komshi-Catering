@@ -6,7 +6,7 @@ function Menu() {
   return (
     <>
       <Header />
-      <SecondHeader name={DATA[2]?.title} />
+      <SecondHeader name={DATA[3]?.title} />
     </>
   );
 }

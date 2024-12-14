@@ -1,21 +1,27 @@
 export const DATA = [
   {
+    title: "მთავარი",
+    id: 0,
+    sectionName: "home",
+    path: "/",
+  },
+ {
     title: "ჩვენს შესახებ",
     id: 1,
-    sectionName: "AboutUs",
-    path: "/AboutUs",
+    sectionName: "aboutUs",
+    path: "/aboutUs",
   },
   {
     title: "ლანჩი",
     id: 2,
-    sectionName: "Lunch",
-    path: "/Lunch",
+    sectionName: "lunch",
+    path: "/lunch",
   },
   {
     title: "მენიუ",
     id: 3,
-    sectionName: "Menu",
-    path: "/Menu",
+    sectionName: "menu",
+    path: "/menu",
   },
   {
     title: "პარტნიორები",
@@ -26,7 +32,7 @@ export const DATA = [
   {
     title: "კონტაქტი",
     id: 5,
-    sectionName: "ContactUs",
-    path: "/ContactUs",
+    sectionName: "contactUs",
+    path: "/contactUs",
   },
 ];

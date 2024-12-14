@@ -6,7 +6,7 @@ function Contact() {
   return (
     <>
       <Header />
-      <SecondHeader name={DATA[4]?.title} />
+      <SecondHeader name={DATA[5]?.title} />
     </>
   );
 }

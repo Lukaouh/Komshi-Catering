@@ -7,8 +7,8 @@ import "../AboutUs/AboutUs.css";
 export default function AboutUs() {
   return (
     <>
-      <Header id={DATA[0].id} />
-      <SecondHeader name={DATA[0]?.title} />
+      <Header id={DATA[1].id} />
+      <SecondHeader name={DATA[1]?.title} />
       <div className="container containerValue">
         <div className="LeftSide col-6">
           <img src={catering} alt="company"></img>

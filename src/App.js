@@ -1,21 +1,42 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Link,
+  Route,
+} from "react-router-dom";
 import Header from "./components/headers/Header";
 import Home from "./pages/Home/home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Menu from "./pages/Menu/Menu";
 import ContactUs from "./pages/ContactUs/Contact";
+import Lunch from "./pages/Lunch/Lunch";
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/aboutUs",
+      element: <AboutUs />,
+    },
+    {
+      path: "/menu",
+      element: <Menu />,
+    },
+    {
+      path: "/contactUs",
+      element: <ContactUs />,
+    },
+    {
+      path: "/lunch",
+      element: <Lunch />,
+    },
+  ]);
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/Menu" element={<Menu />} />
-          <Route path="/ContactUs" element={<ContactUs />} />
-        </Routes>
-      </Router>
+      <RouterProvider router={router} />
     </div>
   );
 }

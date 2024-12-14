@@ -6,10 +6,17 @@ import basket from "../../assets/img/Vector.png";
 import circle from "../../assets/img/Ellipse 22.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBurger } from '@fortawesome/free-solid-svg-icons';
+import MobHeader from "./HeadersItem/HeaderItems";
+import HeaderItems from "./HeadersItem/HeaderItems";
 
 function Header(props) {
+  const [activeMenu, setActiveMenu] = useState(false)
+  function toggleMenu(){
+    setActiveMenu(!activeMenu)
+  }
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <>
@@ -38,26 +45,33 @@ function Header(props) {
           </div>
           <div className="header">
             <Link to="/">
-              <img src={logo} alt="logo"></img>
+              <img src={logo} alt="logo" className="activeLogo"></img>
             </Link>
-            <div className="pages">
-              <ul>
-                {DATA.map((item) => (
-                  <Link to={item.path} key={item.id}>
-                    <li
-                      className={`title ${
-                        pathname === item.path ? "active" : ""
-                      }`}
-                    >
-                      {item.title}
-                    </li>
-                  </Link>
-                ))}
-              </ul>
+            <div className="burger-icon" >
+                <FontAwesomeIcon icon={faBurger} className="burger" onClick={toggleMenu} />
             </div>
+          <div className="pages">
+              {DATA.map((item)=>(
+              <HeaderItems 
+              path = {item.path} 
+              id={item.id}
+              title = {item.title}/>
+            ))}
+          </div>
           </div>
         </div>
       </div>
+      <div className="mobNavBackground">
+        <div className={`container  ${ activeMenu ? "mobileNavabar " : "hiddenNavbar" }`}>
+              {DATA.map((item)=>(
+              <HeaderItems 
+              path = {item.path} 
+              id={item.id}
+              title = {item.title}/>
+            ))}
+          </div>
+        </div>
+
     </>
   );
 }

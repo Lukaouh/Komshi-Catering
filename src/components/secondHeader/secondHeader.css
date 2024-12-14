@@ -52,3 +52,13 @@
 
     margin-top: 20px;
 }
+
+@media only screen and (max-width:520px){
+    .main-text .h1Text {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+    }
+    .contactInfo{
+        gap: 18px;
+    }
+}
