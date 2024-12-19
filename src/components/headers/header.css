@@ -55,7 +55,7 @@ dl, ol, ul {
     width: 100%;
     background-color: white;
     border-radius: 5px;
-    padding: 10px 20px 10px 0px;
+    padding: 10px 20px 10px 20px;
     box-shadow: -10px 30px 50px rgba(209, 209, 209, 0.3);
 }
 .header img{
@@ -107,7 +107,7 @@ ul li::marker {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    /* align-items: end; */
+    align-items: end;
     padding:50px 0 10px 0;
     width: 100%;
 }
@@ -232,6 +232,9 @@ ul li::marker {
 @media only screen and (max-width:768px){
       .title{
         font-size: 13px;
+    }
+    .contact{
+        align-items: start;
     }
     .contact p{
         font-size: 13px;

@@ -4,6 +4,7 @@ import SecondHeader from "../../components/secondHeader/secondHeader";
 import { DATA } from "../../components/headers/DATA";
 import catering from "../../assets/img/catering.png";
 import "../AboutUs/AboutUs.css";
+import Footer from"../../components/Footer/footer";
 export default function AboutUs() {
   return (
     <>
@@ -39,6 +40,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

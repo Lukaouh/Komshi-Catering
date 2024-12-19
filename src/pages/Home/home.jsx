@@ -3,6 +3,7 @@ import Header from "../../components/headers/Header";
 import { DATA } from "../../components/headers/DATA";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from"../../components/Footer/footer";
 function Home() {
   const { hash } = useLocation();
   useEffect(() => {
@@ -31,6 +32,7 @@ function Home() {
         სტანდარტების, სწრაფი მომსახურებისა და სანდოობის შენარჩუნება ჩვენი
         მთავარი პრიორიტეტია.
       </section>
+      <Footer/>
     </>
   );
 }
