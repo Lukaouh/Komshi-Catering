@@ -3,7 +3,10 @@ import Header from "../../components/headers/Header";
 import { DATA } from "../../components/headers/DATA";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import Footer from"../../components/Footer/footer";
+import Footer from "../../components/Footer/footer";
+import { useNavigate } from "react-router-dom";
+import HomeLogo from "../../assets/img/Vector (5).png";
+import ScrollPhoto from "../../components/scrolledPhotos/ScrollPhoto";
 function Home() {
   const { hash } = useLocation();
   useEffect(() => {
@@ -14,25 +17,48 @@ function Home() {
       }
     }
   }, [hash]);
+  const navigate = useNavigate();
+  const MenuBtn = () => {
+    navigate("/menu");
+  };
   return (
     <>
       <Header />
-      <section id="partnership" style={{ marginTop: "1000px" }}>
-        ტრაპეზარიას არომატული, ჯანსაღი, მრავალფეროვანი კერძები პირდაპირ ჩვენი
-        სამზარეულოდან თქვენს მაგიდაზე მოხვდება. დანაყრდით და „ითამაშეთ“ რჩეული
-        გემოებით, ყველანაირი რისკის გარეშე. მაღალი სტანდარტების, სწრაფი
-        მომსახურებისა და სანდოობის შენარჩუნება ჩვენი მთავარი
-        პრიორიტეტია.ტრაპეზარიას არომატული, ჯანსაღი, მრავალფეროვანი კერძები
-        პირდაპირ ჩვენი სამზარეულოდან თქვენს მაგიდაზე მოხვდება. დანაყრდით და 
-        „ითამაშეთ“ რჩეული გემოებით, ყველანაირი რისკის გარეშე. მაღალი
-        სტანდარტების, სწრაფი მომსახურებისა და სანდოობის შენარჩუნება ჩვენი
-        მთავარი პრიორიტეტია. ტრაპეზარიას არომატული,ჯანსაღი, მრავალფეროვანი
-        კერძები პირდაპირ ჩვენი სამზარეულოდან თქვენს მაგიდაზე მოხვდება. დანაყრდით
-        და  „ითამაშეთ“ რჩეული გემოებით, ყველანაირი რისკის გარეშე. მაღალი
-        სტანდარტების, სწრაფი მომსახურებისა და სანდოობის შენარჩუნება ჩვენი
-        მთავარი პრიორიტეტია.
-      </section>
-      <Footer/>
+      <div className="mainDiv">
+        <div className="styledBackground">
+          <div className="styledBox">
+            <img src={HomeLogo} className="homeLogo" alt="homeLogo"></img>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="firstHalf ">
+              <div className="content">
+                <h1>
+                  დაგეგმე
+                  <br />
+                  <span className="child1">
+                    <span className="child2">შენი</span> დღესასწაული
+                  </span>
+                </h1>
+                <p>
+                  კომპანია ,,კომში” გთავაზობთ პერსონალური, კორპორატიული და სხვა
+                  ტიპის ღონისძიებების საკვებით უზრუნველყოფას.
+                </p>
+                <div className="buttonMenu">
+                  <button onClick={MenuBtn}>მენიუ</button>
+                </div>
+              </div>
+            </div>
+            <div className="secondHalf">
+              <ScrollPhoto />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="partnership" style={{ marginTop: "1000px" }}></section>
+      <Footer />
     </>
   );
 }

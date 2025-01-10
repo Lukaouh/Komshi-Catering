@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import "./header.css";
 import { DATA } from "./DATA";
 import logo from "../../assets/img/header logo.png";
@@ -7,7 +7,7 @@ import circle from "../../assets/img/Ellipse 22.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBurger } from '@fortawesome/free-solid-svg-icons';
+import { faBars,faX } from '@fortawesome/free-solid-svg-icons';
 import MobHeader from "./HeadersItem/HeaderItems";
 import HeaderItems from "./HeadersItem/HeaderItems";
 
@@ -17,8 +17,7 @@ function Header(props) {
     setActiveMenu(!activeMenu)
   }
   const { pathname } = useLocation();
-
-  return (
+  return ( 
     <>
       <div className="mainContainer">
         <div className="container">
@@ -39,7 +38,7 @@ function Header(props) {
             <div className="basket">
               <img src={basket} alt="basket"></img>
               <div className="circle">
-                <span>2</span>
+                <span>1</span>
               </div>
             </div>
           </div>
@@ -48,7 +47,7 @@ function Header(props) {
               <img src={logo} alt="logo" className="activeLogo"></img>
             </Link>
             <div className="burger-icon" >
-                <FontAwesomeIcon icon={faBurger} className="burger" onClick={toggleMenu} />
+                <FontAwesomeIcon icon={activeMenu ? faX : faBars} className="burger" onClick={toggleMenu} />
             </div>
           <div className="pages">
               {DATA.map((item)=>(
@@ -70,7 +69,7 @@ function Header(props) {
               title = {item.title}/>
             ))}
           </div>
-        </div>
+      </div>
 
     </>
   );
