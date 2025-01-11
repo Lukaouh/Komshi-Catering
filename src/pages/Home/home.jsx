@@ -7,6 +7,8 @@ import Footer from "../../components/Footer/footer";
 import { useNavigate } from "react-router-dom";
 import HomeLogo from "../../assets/img/Vector (5).png";
 import ScrollPhoto from "../../components/scrolledPhotos/ScrollPhoto";
+import komshi2 from "../../assets/img/komshi(2).png";
+import Services from "../../components/services/Services";
 function Home() {
   const { hash } = useLocation();
   useEffect(() => {
@@ -49,12 +51,16 @@ function Home() {
                   <button onClick={MenuBtn}>მენიუ</button>
                 </div>
               </div>
+              <img src={komshi2} />
             </div>
-            <div className="secondHalf">
+            <div className="secondHlf">
               <ScrollPhoto />
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Services />
       </div>
 
       <section id="partnership" style={{ marginTop: "1000px" }}></section>

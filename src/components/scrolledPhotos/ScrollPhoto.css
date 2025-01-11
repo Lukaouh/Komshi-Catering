@@ -1,25 +1,30 @@
+.boxContainer {
+  padding-top: 100px;
+  padding-left: 100px;
+}
 .buttons {
   position: relative;
 }
+
 .buttonFor {
   position: absolute;
-  left: 430px;
+  left: 470px;
   bottom: 80px;
-  width: 50px;
-  height: 180px;
+  width: 45px;
+  height: 190px;
   background: rgba(255, 255, 255, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .buttonFor button {
-  border-radius: 50%;
-  width: 15px;
   height: 15px;
-  border: 2px solid rgba(107, 170, 169, 1);
+  width: 15px;
+  border-radius: 50%;
+  border: 1px solid rgba(107, 170, 169, 1);
   background-color: white;
 
   box-shadow:
@@ -27,9 +32,33 @@
     0 0 20px rgba(115, 192, 198, 0.3),
     0 0 30px rgba(115, 192, 198, 0.1);
 }
+.buttonFor button:active {
+  background-color: rgba(107, 170, 169, 1);
+}
 
+.imgSrc img {
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+}
 @media only screen and (max-width: 996px) {
+  .boxContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+  }
   .buttonFor {
     left: -40px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .imgSrc img {
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+  }
+  .buttonFor {
+    bottom: 30px;
   }
 }
