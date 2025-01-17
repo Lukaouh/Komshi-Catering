@@ -18,19 +18,23 @@
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;
+
+  font-family: mt-medium;
 }
 
 .buttonFor button {
+  appearance: none;
+  -webkit-appearance: none;
   height: 15px;
   width: 15px;
-  border-radius: 50%;
-  border: 1px solid rgba(107, 170, 169, 1);
+  border-radius: 10px;
+  border: 1.5px solid rgba(107, 170, 169, 1);
   background-color: white;
 
   box-shadow:
-    0 0 10px rgba(115, 192, 198, 0.5),
-    0 0 20px rgba(115, 192, 198, 0.3),
-    0 0 30px rgba(115, 192, 198, 0.1);
+    0 0px 10px rgba(76, 129, 133, 0.5),
+    0 0px 10px rgba(40, 85, 88, 0.3),
+    0 0px 0px rgba(17, 139, 148, 0.1);
 }
 .buttonFor button:active {
   background-color: rgba(107, 170, 169, 1);
@@ -41,6 +45,7 @@
   height: 350px;
   border-radius: 10px;
 }
+
 @media only screen and (max-width: 996px) {
   .boxContainer {
     display: flex;
@@ -52,13 +57,26 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 576px) {
   .imgSrc img {
     width: 350px;
     height: 250px;
     border-radius: 10px;
   }
   .buttonFor {
-    bottom: 30px;
+    width: 30px;
+    height: 150px;
+    bottom: 50px;
+    left: -10px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .imgSrc img {
+    width: 300px;
+    height: 200px;
+  }
+  .buttonFor {
+    bottom: 20px;
+    left: -20px;
   }
 }

@@ -1,18 +1,40 @@
+.serviceComp {
+  padding-top: 100px;
+}
+
 .service {
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
   color: rgba(145, 185, 184, 1);
 
   padding-top: 50px;
+}
+
+.components p {
+  font-size: 17px;
+  line-height: 22px;
+  font-family: mt-medium;
+  color: #808080;
+
+  padding-top: 10px;
 }
 .coloredBack {
   background-color: rgba(145, 185, 184, 1);
   color: white;
 }
-.components {
-  width: 198px;
-  height: 230px;
+.coloredBack p {
+  font-size: 17px;
+  line-height: 22px;
+  font-family: mt-medium;
+  color: white;
+
+  padding-top: 10px;
+}
+.components,
+.coloredBack {
+  width: 100%;
+  min-height: 230px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,9 +48,60 @@
 .components p {
   margin-top: 10px;
 }
+.serviceText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+}
+.serviceText h1 {
+  color: #7c7c7c;
+  font-size: 48px;
+  font-family: mt-medium;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.servicePara {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.servicePara .firstOne {
+  color: #8c8c8c;
+  font-size: 19px;
+  font-family: mt-medium;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.servicePara .secondOne {
+  color: #7c7c7c;
+  font-size: 16px;
+  font-family: nus-medium;
+  font-weight: 500;
+  letter-spacing: 1px;
+  max-width: 55%;
+
+  padding-top: 20px;
+}
+
 @media only screen and (max-width: 768px) {
   .service {
-    display: grid;
+    /* display: grid; */
     gap: 6px;
+  }
+  .servicePara .secondOne {
+    max-width: 100%;
+    font-size: 14px;
+  }
+  .servicePara .firstOne {
+    font-size: 16px;
+  }
+
+  .serviceText h1 {
+    font-size: 44px;
   }
 }

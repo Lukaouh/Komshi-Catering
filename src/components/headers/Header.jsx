@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import MobHeader from "./HeadersItem/HeaderItems";
 import HeaderItems from "./HeadersItem/HeaderItems";
-
+import MobileHeader from "./responsiveHeader/mobileHeader";
 function Header(props) {
   const [activeMenu, setActiveMenu] = useState(false);
   function toggleMenu() {
@@ -66,13 +66,9 @@ function Header(props) {
           </div>
         </div>
       </div>
-      <div className="mobNavBackground">
-        <div
-          className={`container  ${activeMenu ? "mobileNavabar " : "hiddenNavbar"}`}
-        >
-          {DATA.map((item) => (
-            <HeaderItems path={item.path} id={item.id} title={item.title} />
-          ))}
+      <div className={activeMenu ? "showNavbar" : "mobileNavabar"}>
+        <div className="headerItemsMob">
+          <MobileHeader />
         </div>
       </div>
     </>

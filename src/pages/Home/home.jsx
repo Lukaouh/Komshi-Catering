@@ -9,6 +9,8 @@ import HomeLogo from "../../assets/img/Vector (5).png";
 import ScrollPhoto from "../../components/scrolledPhotos/ScrollPhoto";
 import komshi2 from "../../assets/img/komshi(2).png";
 import Services from "../../components/services/Services";
+
+import { Container, Row } from "react-bootstrap";
 function Home() {
   const { hash } = useLocation();
   useEffect(() => {
@@ -32,8 +34,8 @@ function Home() {
             <img src={HomeLogo} className="homeLogo" alt="homeLogo"></img>
           </div>
         </div>
-        <div className="container">
-          <div className="row">
+        <Container>
+          <Row>
             <div className="firstHalf ">
               <div className="content">
                 <h1>
@@ -56,12 +58,10 @@ function Home() {
             <div className="secondHlf">
               <ScrollPhoto />
             </div>
-          </div>
-        </div>
+          </Row>
+        </Container>
       </div>
-      <div>
-        <Services />
-      </div>
+      <Services />
 
       <section id="partnership" style={{ marginTop: "1000px" }}></section>
       <Footer />

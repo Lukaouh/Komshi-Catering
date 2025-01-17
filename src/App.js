@@ -11,6 +11,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import Menu from "./pages/Menu/Menu";
 import ContactUs from "./pages/ContactUs/Contact";
 import Lunch from "./pages/Lunch/Lunch";
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const router = createBrowserRouter([
     {
