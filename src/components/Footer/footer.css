@@ -11,13 +11,20 @@
   justify-content: space-between;
   align-items: center;
 }
-.footerItem1 img {
-  width: 31px;
-  height: 31px;
-  background: rgba(244, 244, 244, 0.705);
-  border: 5px solid rgba(244, 244, 244, 0.3);
+.komshiLogo {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.komshiLogo img {
+  position: absolute;
+  left: 50%;
+  width: 45px;
+  height: 40px;
+  background: #362f2f33;
+  border: 6px solid rgba(244, 244, 244, 0);
   border-radius: 50%;
-  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.15);
+  padding-left: 3px;
 }
 .footerItem1 {
   display: flex;
@@ -27,6 +34,15 @@
   font-family: nus-regular;
   color: rgba(255, 255, 255, 1);
 }
+.footerItem1 img {
+  width: 31px;
+  height: 31px;
+  background: rgba(244, 244, 244, 0.705);
+  border: 5px solid rgba(244, 244, 244, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
 .Info {
   line-height: 10px;
 }
@@ -44,7 +60,7 @@ span {
 }
 .social {
   cursor: pointer;
-  color: wheat;
+  color: white;
 }
 
 .footerLogo img {
@@ -57,5 +73,11 @@ span {
     flex-direction: column;
     align-items: start;
     gap: 30px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .komshiLogo img {
+    left: 46%;
   }
 }

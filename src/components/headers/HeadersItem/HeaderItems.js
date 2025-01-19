@@ -7,13 +7,18 @@ function HeaderItems(props) {
   const { pathname } = useLocation();
   return (
     <div>
-      <ul>
-        <Link to={props.path} key={props.id}>
-          <li className={`title ${pathname === props.path ? "active" : ""}`}>
-            {props.title}
-          </li>
-        </Link>
-      </ul>
+      <nav>
+        <ul>
+          <Link to={props.path} key={props.id}>
+            <li
+              className={`title ${pathname === props.path ? "active" : ""}`}
+              key={props.id}
+            >
+              {props.title}
+            </li>
+          </Link>
+        </ul>
+      </nav>
     </div>
   );
 }

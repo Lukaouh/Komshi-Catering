@@ -36,6 +36,7 @@ function Services() {
                   src={item.image}
                   alt={item.name}
                   className="serviceImage"
+                  key={item.id}
                 />
                 <p>{item.name}</p>
               </div>

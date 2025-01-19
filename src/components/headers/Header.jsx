@@ -24,7 +24,11 @@ function Header(props) {
           <div className="contactInfo">
             <div className="contact">
               <p>შეკვეთისთვის დაგვიკავშირდით</p>
-              <span>+ 995 593 215 212</span>
+              <span
+                onClick={() => (window.location.href = "tel:+995593215212")}
+              >
+                + 995 593 215 212
+              </span>
             </div>
             <div className="line">
               <div className="lineHeight"></div>

@@ -12,7 +12,10 @@ import Menu from "./pages/Menu/Menu";
 import ContactUs from "./pages/ContactUs/Contact";
 import Lunch from "./pages/Lunch/Lunch";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import MobileHeader from "./components/headers/responsiveHeader/mobileHeader";
 function App() {
+  const [activeList, setActiveList] = useState(false);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -35,9 +38,10 @@ function App() {
       element: <Lunch />,
     },
   ]);
+
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

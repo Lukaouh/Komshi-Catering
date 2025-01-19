@@ -5,16 +5,25 @@ import gmail from "../../assets/img/gmail.png";
 import footerLogo from "../../assets/img/footerLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import footerKomshi from "../../assets/img/komshiFooter.png";
 function footer() {
   return (
     <>
+      <div className="komshiLogo">
+        <img src={footerKomshi} />
+      </div>
       <div className="footerContainer">
         <div className="container footer">
           <div className="footerItem1">
             <img src={phone} alt="phone" />
             <div className="Info">
               <p>შეკვეთისთვის დაგვიკავშირდით</p>
-              <span>+ 995 593 215 212</span>
+              <span
+                onClick={() => (window.location.href = "tel:+995593215212")}
+                style={{ cursor: "pointer" }}
+              >
+                + 995 593 215 212
+              </span>
             </div>
           </div>
           <div className="footerItem1">
@@ -46,7 +55,6 @@ function footer() {
               </a>
             </div>
           </div>
-
           <div className="footerItem3">
             <div className="footerLogo">
               <img src={footerLogo} alt="logo" />
