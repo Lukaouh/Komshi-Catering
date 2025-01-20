@@ -221,6 +221,7 @@ ul li::marker {
   background-color: rgb(255, 255, 255);
   border-radius: 0 10px 10px;
 
+  height: 80%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .mobileNavabar {
@@ -234,10 +235,9 @@ ul li::marker {
   flex-direction: column;
 }
 .headerItemsMob ul li {
-  list-style: none;
   text-decoration: none;
-  color: rgb(226, 194, 50);
 }
+
 .headerItemsMob a {
   text-decoration: none;
 }

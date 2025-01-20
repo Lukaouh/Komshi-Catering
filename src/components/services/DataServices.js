@@ -23,16 +23,11 @@ export const DataService = [
     active: false,
     id: 3,
   },
-  {
-    name: "კორპორატ. ღონისძიებები",
-    image: corporation,
-    active: false,
-    id: 4,
-  },
+
   {
     name: "ფურშეტი შეკრებისთვის",
     image: catering,
     active: false,
-    id: 5,
+    id: 4,
   },
 ];

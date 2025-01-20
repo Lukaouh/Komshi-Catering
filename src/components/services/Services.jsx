@@ -26,12 +26,9 @@ function Services() {
         </div>
         <Row>
           {DataService.map((item) => (
-            <Col>
+            <Col lg={6} xl={3} key={item.id}>
               {" "}
-              <div
-                className={` ${item.active ? "coloredBack" : "components"}`}
-                key={item.id}
-              >
+              <div className={` ${item.active ? "coloredBack" : "components"}`}>
                 <img
                   src={item.image}
                   alt={item.name}
