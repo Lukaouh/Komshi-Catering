@@ -35,7 +35,7 @@ function Home() {
           </div>
         </div>
         <Container>
-          <Row>
+          <Row className="homeRow">
             <div className="firstHalf ">
               <div className="content">
                 <h1>

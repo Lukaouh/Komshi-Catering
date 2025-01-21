@@ -1,8 +1,10 @@
 import React from "react";
+import "./mobileHeader.css";
 import HeaderItems from "../HeadersItem/HeaderItems";
 import { DATA } from "../DATA";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+
 function mobileHeader() {
   return (
     <div className="mobHeader">
@@ -16,7 +18,15 @@ function mobileHeader() {
           />
         ))}
       </div>
-      <div className="social" style={{ paddingLeft: "20px" }}>
+      <div
+        className="social"
+        style={{
+          paddingLeft: "20px",
+          paddingTop: "50%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <a
           href="https://www.facebook.com/profile.php?id=61559658651904"
           target="_blank"

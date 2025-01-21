@@ -6,35 +6,38 @@ export default function ContactForm({ handleChange, values, handlClick }) {
       <form onSubmit={handlClick}>
         <div className="name" style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="name">სახელი</label>
+            <label htmlFor="first_name">სახელი</label>
             <input
               type="text"
-              id="name"
-              value={values.name}
-              name="name"
+              id="first_name"
+              value={values.first_name}
+              name="first_name"
               onChange={(event) => handleChange(event)}
+              placeholder="დავით"
             ></input>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="surname">გვარი</label>
+            <label htmlFor="last_name">გვარი</label>
             <input
               type="text"
-              id="surname"
-              name="surname"
-              value={values.surname}
+              id="last_name"
+              name="last_name"
+              value={values.last_name}
               onChange={(event) => handleChange(event)}
+              placeholder="გვარიშვილი"
             ></input>
           </div>
         </div>
         <div className="phone" style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="phone">ტელ.ნომერი</label>
+            <label htmlFor="mobile">ტელ.ნომერი</label>
             <input
               type="text"
-              id="phone"
-              name="phone"
-              value={values.phone}
+              id="mobile"
+              name="mobile"
+              // value={values.mobile}
               onChange={(event) => handleChange(event)}
+              placeholder="555 123 456"
             ></input>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
@@ -45,6 +48,7 @@ export default function ContactForm({ handleChange, values, handlClick }) {
               name="email"
               value={values.email}
               onChange={(event) => handleChange(event)}
+              placeholder="komshi@gmail.com"
             ></input>
           </div>
         </div>
@@ -60,6 +64,7 @@ export default function ContactForm({ handleChange, values, handlClick }) {
             name="text"
             value={values.text}
             onChange={(event) => handleChange(event)}
+            placeholder="ჩემი აზრი თქვენს შესახებ..."
           ></textarea>
         </div>
         <button>გაგზავნა</button>

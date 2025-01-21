@@ -9,11 +9,12 @@ import gmail from "../../assets/img/email-2.png";
 import location from "../../assets/img/location.png";
 import axios from "axios";
 import ContactForm from "../../components/Contact-Form/ContactForm";
+import { parse } from "@fortawesome/fontawesome-svg-core";
 function Contact() {
   const [values, setValues] = useState({
-    name: "",
-    surname: "",
-    phone: "",
+    first_name: "",
+    last_name: "",
+    mobile: 0,
     email: "",
     text: "",
   });
@@ -21,14 +22,18 @@ function Contact() {
     const { name, value } = event.target;
     setValues((prevValues) => ({
       ...prevValues,
-      [name]: value,
+      [name]:
+        name === "mobile" ? Number(value.replace(/\D/g, "")) || "" : value,
     }));
     // console.log(values);
   };
 
   const handlClick = async () => {
     try {
-      const response = await axios.post("", values);
+      const response = await axios.post(
+        "http://34.118.255.0:8000/api/contact/contact/",
+        values
+      );
       if (response.status >= 200 && response.status < 300) {
         console.log("Request was successful");
       }
@@ -37,6 +42,8 @@ function Contact() {
       window.alert(error.message);
     }
   };
+  console.log(values);
+
   return (
     <>
       <Header />

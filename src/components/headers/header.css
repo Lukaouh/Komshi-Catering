@@ -209,38 +209,6 @@ ul li::marker {
   display: none;
 }
 
-/* For mobile Device Header */
-.showNavbar {
-  position: absolute;
-  padding: 100px 50px 200px 20px;
-  left: 0;
-  z-index: 100;
-  opacity: 95%;
-  overflow: hidden;
-  transition: 0.5s ease-in;
-  background-color: rgb(255, 255, 255);
-  border-radius: 0 10px 10px;
-
-  height: 80%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-.mobileNavabar {
-  position: absolute;
-  left: -500px;
-  transition: 1s ease-out;
-}
-.headerItemsMob {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.headerItemsMob ul li {
-  text-decoration: none;
-}
-
-.headerItemsMob a {
-  text-decoration: none;
-}
 @media only screen and (max-width: 996px) {
   .header {
     line-height: 5px;
@@ -276,10 +244,6 @@ ul li::marker {
 
 @media only screen and (min-width: 997px) {
   .burger {
-    display: none;
-  }
-  .mobileNavabar,
-  .showNavbar {
     display: none;
   }
 }

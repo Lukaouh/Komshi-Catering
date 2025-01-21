@@ -11,6 +11,10 @@ form {
   padding: 0 50px 70px 50px;
   gap: 20px;
 }
+input:-webkit-autofill {
+  -webkit-text-fill-color: grey !important;
+  font-family: num-regular !important;
+}
 .phone,
 .name,
 .text {
