@@ -27,7 +27,7 @@ function Contact() {
   return (
     <>
       <Header />
-      <SecondHeader name={DATA[5]?.title} />
+      <SecondHeader name={DATA[4]?.title} />
       <div className="container contactlayout">
         <div className="companyInfo">
           <div style={style.divStyle}>

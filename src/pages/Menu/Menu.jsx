@@ -6,6 +6,9 @@ import Footer from "../../components/Footer/footer";
 import { useEffect } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
+import "./Menu.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 function Menu() {
   const [category, setCategory] = useState([]);
   const [activeList, setActiveList] = useState(false);
@@ -45,74 +48,86 @@ function Menu() {
   return (
     <>
       <Header />
-      <SecondHeader name={DATA[3]?.title} />
+      <SecondHeader name={DATA[2]?.title} />
       <Container>
-        {category.map((item) => (
-          <div key={item.id} style={{ padding: "5px" }}>
-            {!item.children.length ? (
-              <div style={{ display: "flex", gap: "10px" }}>
-                <button
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    border: "none",
-                    backgroundColor: "black",
-                  }}
-                  onClick={() => {
-                    handleChildrenMenuList(item.name_ka);
-                  }}
-                ></button>
-                <p>{item.name_ka}</p>
-              </div>
-            ) : (
-              <div style={{ display: "flex", gap: "10px" }}>
-                <p>{item.name_ka}</p>
-                <button
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    border: "none",
-                    backgroundColor: "black",
-                  }}
-                  onClick={() => {
-                    setActiveList(!activeList);
-                  }}
-                ></button>
-              </div>
-            )}
+        <div className="categoryPara">
+          <h4>კატეგორიები</h4>
+        </div>
 
-            {activeList ? (
-              <ul style={{ listStyle: "none" }}>
-                {item.children.map((child) => (
-                  <div
-                    key={child.id}
-                    style={{ display: "flex", paddingBottom: "5px" }}
-                  >
+        <div className="Menu">
+          <div className="CategoryList">
+            {category.map((item) => (
+              <div key={item.id} className="categoryItem">
+                {!item.children.length ? (
+                  <div className="noChildre">
                     <button
-                      type="button"
                       onClick={() => {
-                        handleChildrenMenuList(child.name_ka);
+                        handleChildrenMenuList(item.name_ka);
                       }}
                     ></button>
-                    <li>{child.name_ka}</li>
+                    <p>{item.name_ka}</p>
                   </div>
-                ))}
-              </ul>
-            ) : null}
-          </div>
-        ))}
+                ) : (
+                  <div className="hasChildren">
+                    <p>{item.name_ka}</p>
+                    <a
+                      style={{ cursor: "pointer" }}
+                      onClick={() => {
+                        setActiveList(!activeList);
+                      }}
+                    >
+                      {activeList ? (
+                        <FontAwesomeIcon
+                          icon={faChevronUp}
+                          style={{ color: "grey" }}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faChevronDown}
+                          style={{ color: "grey" }}
+                        />
+                      )}
+                    </a>
+                  </div>
+                )}
 
-        {product.map((element, index) => (
-          <div id={index}>
-            <img
-              src={element.image}
-              style={{ width: "200px", height: "300px" }}
-              alt="partnerLogos"
-            />
-            <h1>სახელი : {element.name_ka}</h1>
-            <h1>ფასი : {element.price}</h1>
+                {activeList ? (
+                  <ul style={{ listStyle: "none" }}>
+                    {item.children.map((child) => (
+                      <div
+                        key={child.id}
+                        style={{ display: "flex", paddingBottom: "5px" }}
+                        className="category_Childre"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => {
+                            handleChildrenMenuList(child.name_ka);
+                          }}
+                        ></button>
+                        <li>{child.name_ka}</li>
+                      </div>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
           </div>
-        ))}
+
+          <div>
+            {product.map((element, index) => (
+              <div id={index}>
+                <img
+                  src={element.image}
+                  style={{ width: "200px", height: "300px" }}
+                  alt="partnerLogos"
+                />
+                <h1>სახელი : {element.name_ka}</h1>
+                <h1>ფასი : {element.price}</h1>
+              </div>
+            ))}
+          </div>
+        </div>
       </Container>
       <Footer />
     </>

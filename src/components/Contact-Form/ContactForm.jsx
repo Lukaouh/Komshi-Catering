@@ -3,12 +3,13 @@ import "../Contact-Form/ContactForm.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { text } from "@fortawesome/fontawesome-svg-core";
 export default function ContactForm({ handleSubmited }) {
   const schema = yup.object({
     first_name: yup.string().required("Field is empty"),
     last_name: yup.string().required("Field is empty"),
     mobile: yup.string().required("Field is empty"),
-    email: yup.string().email().required("Field is empty"),
+    email: yup.string().email("Email must be valid").required("Field is empty"),
     text: yup.string().required("Field is empty"),
   });
   const {
@@ -90,7 +91,7 @@ export default function ContactForm({ handleSubmited }) {
             rows="7"
             cols="40"
             name="text"
-            {...register("text")}
+            {...register("text", { required: "Field is empty" })}
             placeholder="ჩემი აზრი თქვენს შესახებ..."
           ></textarea>
         </div>

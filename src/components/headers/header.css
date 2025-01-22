@@ -199,16 +199,14 @@ ul li::marker {
     line-height: 5px;
     padding: 20px 20px 10px 10px;
   }
-  /* .pages {
-        display: flex;
-        justify-content: end;
-    } */
   .pages {
-    display: none;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
   }
   .title.active {
-    border-bottom: 0;
-    padding: 0;
+    padding-bottom: 20px;
   }
 }
 
@@ -225,9 +223,16 @@ ul li::marker {
   .contact span {
     font-size: 15px;
   }
+  .pages {
+    display: none;
+  }
+  .title.active {
+    border-bottom: 0;
+    padding: 0;
+  }
 }
 
-@media only screen and (min-width: 997px) {
+@media only screen and (min-width: 768px) {
   .burger {
     display: none;
   }

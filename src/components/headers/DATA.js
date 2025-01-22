@@ -5,17 +5,11 @@ export const DATA = [
     sectionName: "home",
     path: "/",
   },
- {
+  {
     title: "ჩვენს შესახებ",
     id: 1,
     sectionName: "aboutUs",
     path: "/aboutUs",
-  },
-  {
-    title: "ლანჩი",
-    id: 2,
-    sectionName: "lunch",
-    path: "/lunch",
   },
   {
     title: "მენიუ",
