@@ -10,7 +10,7 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 
 import HeaderItems from "./HeadersItem/HeaderItems";
 import MobileHeader from "./responsiveHeader/mobileHeader";
-function Header(props) {
+function Header() {
   const [activeMenu, setActiveMenu] = useState(false);
   function toggleMenu() {
     setActiveMenu(!activeMenu);

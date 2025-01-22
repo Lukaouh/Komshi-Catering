@@ -1,16 +1,22 @@
 import React from "react";
 import "../Contact-Form/ContactForm.css";
 import { useForm } from "react-hook-form";
-// import * as yup from "yup";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 export default function ContactForm({ handleSubmited }) {
-  // const
+  const schema = yup.object({
+    first_name: yup.string().required("Field is empty"),
+    last_name: yup.string().required("Field is empty"),
+    mobile: yup.string().required("Field is empty"),
+    email: yup.string().email().required("Field is empty"),
+    text: yup.string().required("Field is empty"),
+  });
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
   });
 
   return (
@@ -38,9 +44,7 @@ export default function ContactForm({ handleSubmited }) {
               type="text"
               id="last_name"
               name="last_name"
-              {...register("last_name", {
-                required: "Field is empty",
-              })}
+              {...register("last_name")}
               placeholder="გვარი"
             ></input>
             {errors.last_name && (
@@ -55,9 +59,7 @@ export default function ContactForm({ handleSubmited }) {
               type="text"
               id="mobile"
               name="mobile"
-              {...register("mobile", {
-                required: "Field is empty",
-              })}
+              {...register("mobile")}
               placeholder="555 123 456"
             ></input>
             {errors.mobile && <p className="error">{errors.mobile.message}</p>}
@@ -68,13 +70,7 @@ export default function ContactForm({ handleSubmited }) {
               type="text"
               id="email"
               name="email"
-              {...register("email", {
-                required: "Field is empty",
-                pattern: {
-                  value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                  message: "Email is not valid",
-                },
-              })}
+              {...register("email")}
               placeholder="komshi@gmail.com"
             ></input>
             {errors.email && <p className="error">{errors.email.message}</p>}
@@ -94,7 +90,7 @@ export default function ContactForm({ handleSubmited }) {
             rows="7"
             cols="40"
             name="text"
-            {...register("text", { required: "Field is empty" })}
+            {...register("text")}
             placeholder="ჩემი აზრი თქვენს შესახებ..."
           ></textarea>
         </div>
