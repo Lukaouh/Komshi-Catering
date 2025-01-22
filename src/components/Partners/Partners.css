@@ -1,0 +1,73 @@
+.partners {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+.partnerText h1 {
+  color: #7c7c7c;
+  font-size: 48px;
+  font-family: mt-medium;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.partners p {
+  color: #8c8c8c;
+  font-size: 19px;
+  font-family: mt-medium;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.partnerLogos {
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 10px;
+  padding: 10px 30px;
+}
+
+.Rightbtn {
+  font-size: 18px;
+  width: 40px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(107, 170, 169, 1);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 40%;
+}
+.Leftbtn {
+  font-size: 18px;
+  width: 40px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(107, 170, 169, 1);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 40%;
+}
+
+.partnerLogos img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 768px) {
+  .partnerText h1 {
+    font-size: 34px;
+  }
+
+  .partners p {
+    font-size: 14px;
+  }
+}

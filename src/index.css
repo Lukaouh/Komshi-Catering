@@ -3,6 +3,22 @@
   padding: 0;
   box-sizing: border-box;
 }
+@font-face {
+  font-family: nus-regular;
+  src: url("../src/assets/fonts/liberty-nus-regular-webfont.ttf");
+}
+@font-face {
+  font-family: mt-medium;
+  src: url("../src/assets/fonts/liberty-mt-medium-webfont.ttf");
+}
+@font-face {
+  font-family: nus-medium;
+  src: url("../src/assets/fonts/liberty-nus-medium-webfont.ttf");
+}
+@font-face {
+  font-family: mt-bold;
+  src: url("../src/assets/fonts/liberty-mt-bold-webfont.ttf");
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",

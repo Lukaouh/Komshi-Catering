@@ -112,3 +112,7 @@ form button {
     font-size: 20px;
   }
 }
+.error {
+  font-family: mt-bold;
+  color: tomato;
+}

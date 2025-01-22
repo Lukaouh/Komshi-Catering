@@ -1,24 +1,39 @@
 import React, { useState, useEffect } from "react";
-
+import axios from "axios";
 import "../scrolledPhotos/ScrollPhoto.css";
-import komshi from "../../assets/img/advertising.jpeg";
-import komshi2 from "../../assets/img/advertising2.jpeg";
-import komshi3 from "../../assets/img/advertising3.jpeg";
+
 export default function ScrollPhoto() {
-  const photoArr = [komshi, komshi2, komshi3];
   const [currentPhoto, setCurrentPhoto] = useState(0);
+  const [galery, setGalery] = useState([]);
   useEffect(() => {
-    photoArr.forEach((src) => {
+    try {
+      async function getPhotos() {
+        const response = await axios.get(
+          "http://34.118.255.0:8000/api/store/images/"
+        );
+        if (response.status >= 200 && response.status < 300) {
+          const image = response.data.map((item) => item.image);
+          setGalery(image);
+        }
+      }
+      getPhotos();
+    } catch (error) {
+      window.alert("");
+    }
+  }, []);
+
+  useEffect(() => {
+    galery.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
-  }, [photoArr]);
+  }, [galery]);
   return (
     <div className="container">
       <div className="row">
         <div className="boxContainer">
           <div className="imgSrc">
-            <img src={photoArr[currentPhoto]} className="imgfluid" />
+            <img src={galery[currentPhoto]} className="imgfluid" />
           </div>
           <div className="buttons">
             <div className="buttonFor">
@@ -30,7 +45,7 @@ export default function ScrollPhoto() {
                   type="checkbox"
                   key={index}
                   onClick={() => {
-                    if (index < photoArr.length) {
+                    if (index < galery.length) {
                       setCurrentPhoto(index);
                       // console.log(index.id);
                     }

@@ -11,38 +11,19 @@ import axios from "axios";
 import ContactForm from "../../components/Contact-Form/ContactForm";
 import { parse } from "@fortawesome/fontawesome-svg-core";
 function Contact() {
-  const [values, setValues] = useState({
-    first_name: "",
-    last_name: "",
-    mobile: 0,
-    email: "",
-    text: "",
-  });
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setValues((prevValues) => ({
-      ...prevValues,
-      [name]:
-        name === "mobile" ? Number(value.replace(/\D/g, "")) || "" : value,
-    }));
-    // console.log(values);
-  };
-
-  const handlClick = async () => {
+  const handleSubmited = async (data) => {
     try {
       const response = await axios.post(
         "http://34.118.255.0:8000/api/contact/contact/",
-        values
+        data
       );
       if (response.status >= 200 && response.status < 300) {
-        console.log("Request was successful");
+        window.alert("Thanks for your feedbeck!");
       }
     } catch (error) {
-      console.log("message didnot send", error);
       window.alert(error.message);
     }
   };
-  console.log(values);
 
   return (
     <>
@@ -72,16 +53,12 @@ function Contact() {
             <img src={location} alt="locationLog" style={style.imgStyle} />
             <div className="contactContent" style={{ paddingLeft: "20px" }}>
               <p>მისამართი</p>
-              <span>Tbilisi,vake,tamarashvili st.65</span>
+              <span>Tbilisi,Ilia vekua st.27</span>
             </div>
           </div>
         </div>
         <div className="contactForm">
-          <ContactForm
-            handleChange={handleChange}
-            values={values}
-            handlClick={handlClick}
-          />
+          <ContactForm handleSubmited={handleSubmited} />
         </div>
       </div>
       <Footer />

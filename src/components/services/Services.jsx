@@ -13,7 +13,11 @@ function Services() {
           <h1>
             სერვისები
             <a>
-              <img src={komshiLogo} alt="Komshi Logo" />
+              <img
+                src={komshiLogo}
+                alt="Komshi Logo"
+                style={{ paddingLeft: "5px" }}
+              />
             </a>
           </h1>
           <div className="servicePara">

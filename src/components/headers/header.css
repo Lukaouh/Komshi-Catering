@@ -1,22 +1,7 @@
 * {
   box-sizing: border-box;
 }
-@font-face {
-  font-family: nus-regular;
-  src: url("../../assets/fonts/liberty-nus-regular-webfont.ttf");
-}
-@font-face {
-  font-family: mt-medium;
-  src: url("../../assets/fonts/liberty-mt-medium-webfont.ttf");
-}
-@font-face {
-  font-family: nus-medium;
-  src: url("../../assets/fonts/liberty-nus-medium-webfont.ttf");
-}
-@font-face {
-  font-family: mt-bold;
-  src: url("../../assets/fonts/liberty-mt-bold-webfont.ttf");
-}
+
 dl,
 ol,
 ul {

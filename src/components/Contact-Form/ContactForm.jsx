@@ -1,20 +1,37 @@
 import React from "react";
 import "../Contact-Form/ContactForm.css";
-export default function ContactForm({ handleChange, values, handlClick }) {
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+export default function ContactForm({ handleSubmited }) {
+  // const
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    // resolver: yupResolver(schema),
+  });
+
   return (
     <>
-      <form onSubmit={handlClick}>
+      <form onSubmit={handleSubmit((data) => handleSubmited(data))}>
         <div className="name" style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <label htmlFor="first_name">სახელი</label>
             <input
               type="text"
               id="first_name"
-              value={values.first_name}
               name="first_name"
-              onChange={(event) => handleChange(event)}
-              placeholder="დავით"
+              placeholder="სახელი"
+              {...register("first_name", {
+                required: "Field is empty",
+              })}
             ></input>
+            {errors.first_name && (
+              <p className="error">{errors.first_name.message}</p>
+            )}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <label htmlFor="last_name">გვარი</label>
@@ -22,10 +39,14 @@ export default function ContactForm({ handleChange, values, handlClick }) {
               type="text"
               id="last_name"
               name="last_name"
-              value={values.last_name}
-              onChange={(event) => handleChange(event)}
-              placeholder="გვარიშვილი"
+              {...register("last_name", {
+                required: "Field is empty",
+              })}
+              placeholder="გვარი"
             ></input>
+            {errors.last_name && (
+              <p className="error">{errors.last_name.message}</p>
+            )}
           </div>
         </div>
         <div className="phone" style={{ display: "flex" }}>
@@ -35,10 +56,12 @@ export default function ContactForm({ handleChange, values, handlClick }) {
               type="text"
               id="mobile"
               name="mobile"
-              // value={values.mobile}
-              onChange={(event) => handleChange(event)}
+              {...register("mobile", {
+                required: "Field is empty",
+              })}
               placeholder="555 123 456"
             ></input>
+            {errors.mobile && <p className="error">{errors.mobile.message}</p>}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <label htmlFor="email">ელ.ფოსტა</label>
@@ -46,15 +69,25 @@ export default function ContactForm({ handleChange, values, handlClick }) {
               type="text"
               id="email"
               name="email"
-              value={values.email}
-              onChange={(event) => handleChange(event)}
+              {...register("email", {
+                required: "Field is empty",
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                  message: "Email is not valid",
+                },
+              })}
               placeholder="komshi@gmail.com"
             ></input>
+            {errors.email && <p className="error">{errors.email.message}</p>}
           </div>
         </div>
         <div
           className="text"
-          style={{ display: "flex", flexDirection: "column" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "start",
+          }}
         >
           <label htmlFor="text">ტექსტი</label>
           <textarea
@@ -62,12 +95,12 @@ export default function ContactForm({ handleChange, values, handlClick }) {
             rows="7"
             cols="40"
             name="text"
-            value={values.text}
-            onChange={(event) => handleChange(event)}
+            {...register("text", { required: "Field is empty" })}
             placeholder="ჩემი აზრი თქვენს შესახებ..."
           ></textarea>
         </div>
-        <button>გაგზავნა</button>
+        {errors.text && <p className="error">{errors.text.message}</p>}
+        <button type="submit">გაგზავნა</button>
       </form>
     </>
   );
