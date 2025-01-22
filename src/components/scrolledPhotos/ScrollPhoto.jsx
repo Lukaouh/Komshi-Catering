@@ -33,7 +33,11 @@ export default function ScrollPhoto() {
       <div className="row">
         <div className="boxContainer">
           <div className="imgSrc">
-            <img src={galery[currentPhoto]} className="imgfluid" />
+            <img
+              src={galery[currentPhoto]}
+              className="imgfluid"
+              alt="advertisingPhoto"
+            />
           </div>
           <div className="buttons">
             <div className="buttonFor">

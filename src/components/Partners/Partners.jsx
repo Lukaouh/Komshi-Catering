@@ -6,24 +6,18 @@ import { useRef } from "react";
 import komshiLogo from "../../assets/img/komshiLogo.png";
 function Partners() {
   const scrollContainerRef = useRef(null);
-
   const [partners, setPartners] = useState([]);
 
-  const PartnersScroll = ({ partners }) => {
-    const scrollContainerRef = useRef(null);
-  };
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
     }
   };
-
   const scrollRight = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
   };
-
   useEffect(() => {
     const getPartners = async () => {
       try {
@@ -55,9 +49,8 @@ function Partners() {
           }}
         >
           <h1>პარტნიორები</h1>
-          <a>
-            <img src={komshiLogo} alt="Komshi Logo" />
-          </a>
+
+          <img src={komshiLogo} alt="Komshi Logo" />
         </div>
         <p>ვიმოგზაუროთ გემრიელ სამყაროში</p>
         <div

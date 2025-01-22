@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import "./../ContactUs/Contact.css";
 import Header from "../../components/headers/Header";
 import SecondHeader from "../../components/secondHeader/secondHeader";
@@ -9,7 +8,7 @@ import gmail from "../../assets/img/email-2.png";
 import location from "../../assets/img/location.png";
 import axios from "axios";
 import ContactForm from "../../components/Contact-Form/ContactForm";
-import { parse } from "@fortawesome/fontawesome-svg-core";
+
 function Contact() {
   const handleSubmited = async (data) => {
     try {

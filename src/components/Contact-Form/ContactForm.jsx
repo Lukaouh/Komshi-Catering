@@ -1,14 +1,13 @@
 import React from "react";
 import "../Contact-Form/ContactForm.css";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+// import * as yup from "yup";
+// import { yupResolver } from "@hookform/resolvers/yup";
 export default function ContactForm({ handleSubmited }) {
   // const
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     // resolver: yupResolver(schema),
@@ -72,7 +71,7 @@ export default function ContactForm({ handleSubmited }) {
               {...register("email", {
                 required: "Field is empty",
                 pattern: {
-                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                  value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
                   message: "Email is not valid",
                 },
               })}

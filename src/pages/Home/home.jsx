@@ -1,6 +1,5 @@
 import "../Home/home.css";
 import Header from "../../components/headers/Header";
-import { DATA } from "../../components/headers/DATA";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Footer from "../../components/Footer/footer";
@@ -53,7 +52,7 @@ function Home() {
                   <button onClick={MenuBtn}>მენიუ</button>
                 </div>
               </div>
-              <img src={komshi2} />
+              <img src={komshi2} alt="komshi" />
             </div>
             <div className="secondHlf">
               <ScrollPhoto />

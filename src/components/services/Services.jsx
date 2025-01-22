@@ -12,13 +12,11 @@ function Services() {
         <div className="serviceText">
           <h1>
             სერვისები
-            <a>
-              <img
-                src={komshiLogo}
-                alt="Komshi Logo"
-                style={{ paddingLeft: "5px" }}
-              />
-            </a>
+            <img
+              src={komshiLogo}
+              alt="Komshi Logo"
+              style={{ paddingLeft: "5px" }}
+            />
           </h1>
           <div className="servicePara">
             <p className="firstOne">ხარისხიანი პროდუქტი და მომსახურება</p>
@@ -31,7 +29,6 @@ function Services() {
         <Row>
           {DataService.map((item) => (
             <Col lg={6} xl={3} key={item.id}>
-              {" "}
               <div className={` ${item.active ? "coloredBack" : "components"}`}>
                 <img
                   src={item.image}

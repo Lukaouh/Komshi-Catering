@@ -3,7 +3,6 @@ import Header from "../../components/headers/Header";
 import SecondHeader from "../../components/secondHeader/secondHeader";
 import { DATA } from "../../components/headers/DATA";
 import Footer from "../../components/Footer/footer";
-import ContactForm from "../../components/Contact-Form/ContactForm";
 import { useEffect } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
@@ -108,6 +107,7 @@ function Menu() {
             <img
               src={element.image}
               style={{ width: "200px", height: "300px" }}
+              alt="partnerLogos"
             />
             <h1>სახელი : {element.name_ka}</h1>
             <h1>ფასი : {element.price}</h1>

@@ -10,7 +10,7 @@ function footer() {
   return (
     <>
       <div className="komshiLogo">
-        <img src={footerKomshi} />
+        <img src={footerKomshi} alt="komshiLogo" />
       </div>
       <div className="footerContainer">
         <div className="container footer">

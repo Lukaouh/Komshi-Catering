@@ -1,14 +1,13 @@
-import { useNavigate, useLocation } from "react-router-dom";
 import "./header.css";
 import { DATA } from "./DATA";
 import logo from "../../assets/img/header logo.png";
 import basket from "../../assets/img/Vector.png";
-import circle from "../../assets/img/Ellipse 22.png";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
-import MobHeader from "./HeadersItem/HeaderItems";
+
 import HeaderItems from "./HeadersItem/HeaderItems";
 import MobileHeader from "./responsiveHeader/mobileHeader";
 function Header(props) {
@@ -16,7 +15,7 @@ function Header(props) {
   function toggleMenu() {
     setActiveMenu(!activeMenu);
   }
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
   return (
     <>
       <div className="mainContainer">

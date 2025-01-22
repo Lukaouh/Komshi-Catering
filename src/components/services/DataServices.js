@@ -1,7 +1,6 @@
 import birthdayImg from "../../assets/img/birthday.png";
 import celebration from "../../assets/img/celebration.png";
 import inventar from "../../assets/img/inventar.png";
-import corporation from "../../assets/img/corporation.png";
 
 import catering from "../../assets/img/cateringSrvc.png";
 export const DataService = [

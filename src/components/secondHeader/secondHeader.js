@@ -10,7 +10,7 @@ export default function secondHeader(props) {
             <h1 className="h1Text">{props.name}</h1>
           </div>
           <div className="span-text">
-            <a href="#">
+            <a href="/">
               <span>მთავარი</span>
             </a>
           </div>
