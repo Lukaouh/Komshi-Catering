@@ -1,10 +1,15 @@
 .Menu {
   display: flex;
 }
+.menuleftSide {
+  display: flex;
+  flex-direction: column;
+}
 .categoryPara {
   display: flex;
   justify-content: start;
   align-items: center;
+
   padding: 10px;
   margin-top: 50px;
   max-width: 280px;
@@ -67,3 +72,101 @@ ul li {
   color: rgba(128, 128, 128, 1);
   font-family: nus-medium;
 }
+
+.lunchBox {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  flex-direction: column;
+  box-shadow: 0 30px 50px 0 rgba(209, 209, 209, 0.4);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 380px;
+}
+
+.lunchBox img {
+  height: 200px;
+  width: 220px;
+  border-radius: 10px;
+}
+.card-text {
+  display: flex;
+  width: 100%;
+}
+.Itemh4 {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  min-height: 55px;
+  align-items: start;
+  text-align: start;
+}
+.Itemh4 h4 {
+  font-size: 16px;
+  color: rgba(128, 128, 128, 1) !important;
+  font-family: nus-regular;
+  padding-top: 10px;
+  background: white;
+}
+.lunchPrice {
+  width: 90%;
+  height: 100px;
+  display: flex;
+  z-index: 1000;
+  justify-content: space-between;
+  align-items: center;
+}
+.Lunchbuttons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.lunchPrice p {
+  font-size: 18px;
+  color: rgba(128, 128, 128, 1) !important;
+  font-family: nus-regular;
+  margin-top: 15px;
+}
+
+.Lunchbuttons input {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  padding-left: 10px;
+}
+.Lunchbuttons button:first-child {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  height: 35px;
+  width: 50px;
+  background-color: white;
+  outline: none;
+  border-radius: 30px 0 0 30px;
+}
+.Lunchbuttons button:last-child {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  height: 35px;
+  width: 50px;
+  background-color: white;
+  outline: none;
+  border-radius: 0 30px 30px 0;
+}
+
+/* .Lunchbuttons {
+} */
+@media (min-width: 1200px) {
+  .col-xl-4 {
+    flex: 0 0 33.3% !important;
+    max-width: 33.3% !important;
+  }
+}
+/* @media (max-width: 997px) {
+  .card img {
+    height: 280px;
+    object-fit: cover;
+  }
+}
+@media (max-width: 768px) {
+  .card img {
+    height: 170px;
+  }
+} */

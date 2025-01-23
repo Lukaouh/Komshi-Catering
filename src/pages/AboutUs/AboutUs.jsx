@@ -21,7 +21,7 @@ export default function AboutUs() {
             <Col>
               <div className="LeftSide">
                 <h1>
-                  ქეითერინგ კომპანია <span className="komshi">"კომში"</span>
+                  ქეითერინგ კომპანია <span className="komshi">„კომში“</span>
                 </h1>
                 <div className="Paraghrap">
                   <p>
