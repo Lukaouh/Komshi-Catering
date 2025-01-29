@@ -1,7 +1,8 @@
 import React from "react";
 import "../secondHeader/secondHeader.css";
-
-export default function secondHeader(props) {
+import { useLanguage } from "../../Context/ChangeLanguage";
+export default function SecondHeader(props) {
+  const { toggleLang } = useLanguage();
   return (
     <div className="headContainer">
       <div className="background">
@@ -11,7 +12,7 @@ export default function secondHeader(props) {
           </div>
           <div className="span-text">
             <a href="/">
-              <span>მთავარი</span>
+              <span>{toggleLang === "ka" ? "მთავარი" : "Home Page"}</span>
             </a>
           </div>
         </div>

@@ -76,6 +76,9 @@
 }
 
 @media only screen and (max-width: 997px) {
+  .LeftSide h1 {
+    line-height: 50px;
+  }
   .RightSide {
     padding-top: 70px;
   }

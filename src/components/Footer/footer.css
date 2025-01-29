@@ -80,4 +80,7 @@ span {
   .komshiLogo img {
     left: 46%;
   }
+  span {
+    line-height: 20px;
+  }
 }

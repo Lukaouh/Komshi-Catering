@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { LanguageProvider } from "./Context/ChangeLanguage";
 import Home from "./pages/Home/home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Menu from "./pages/Menu/Menu";
@@ -9,7 +9,6 @@ import ContactUs from "./pages/ContactUs/Contact";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  // const [activeListItem, setActiveListItem] = useState(false);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -31,7 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      <RouterProvider router={router}></RouterProvider>
+      <LanguageProvider>
+        <RouterProvider router={router} />
+      </LanguageProvider>
     </div>
   );
 }

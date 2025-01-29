@@ -10,7 +10,9 @@ import komshi2 from "../../assets/img/komshi(2).png";
 import Services from "../../components/services/Services";
 import Partners from "../../components/Partners/Partners";
 import { Container, Row } from "react-bootstrap";
+import { useLanguage } from "../../Context/ChangeLanguage";
 function Home() {
+  const { toggleLang } = useLanguage();
   const { hash } = useLocation();
   useEffect(() => {
     if (hash) {
@@ -38,18 +40,25 @@ function Home() {
             <div className="firstHalf ">
               <div className="content">
                 <h1>
-                  დაგეგმე
+                  {toggleLang === "ka" ? "დაგეგმე" : "Plan"}
                   <br />
                   <span className="child1">
-                    <span className="child2">შენი</span> დღესასწაული
+                    <span className="child2">
+                      {" "}
+                      {toggleLang === "ka" ? "შენი" : "your"}
+                    </span>{" "}
+                    {toggleLang === "ka" ? "დღესასწაული" : "celebration"}
                   </span>
                 </h1>
                 <p>
-                  კომპანია ,,კომში” გთავაზობთ პერსონალური, კორპორატიული და სხვა
-                  ტიპის ღონისძიებების საკვებით უზრუნველყოფას.
+                  {toggleLang === "ka"
+                    ? "კომპანია „კომში“ გთავაზობთ საკვებით უზრუნველყოფას ნებისმიერი სახის ღონისძიებისთის"
+                    : " „Komshi“ provides catering services for all types of occasions."}
                 </p>
                 <div className="buttonMenu">
-                  <button onClick={MenuBtn}>მენიუ</button>
+                  <button onClick={MenuBtn}>
+                    {toggleLang === "ka" ? "მენიუ" : "Menu"}
+                  </button>
                 </div>
               </div>
               <img src={komshi2} alt="komshi" />

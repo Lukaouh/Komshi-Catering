@@ -1,11 +1,12 @@
 import React from "react";
-import "./mobileHeader.css";
+import "./MobileHeader.css";
 import HeaderItems from "../HeadersItem/HeaderItems";
 import { DATA } from "../DATA";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
-
-function mobileHeader() {
+import { useLanguage } from "../../../Context/ChangeLanguage";
+function MobileHeader() {
+  const { toggleLang } = useLanguage();
   return (
     <div className="mobHeader">
       <div className="headerItems">
@@ -13,7 +14,7 @@ function mobileHeader() {
           <HeaderItems
             path={item.path}
             id={item.id}
-            title={item.title}
+            title={item[`title_${toggleLang}`]}
             key={item.id}
           />
         ))}
@@ -53,4 +54,4 @@ function mobileHeader() {
   );
 }
 
-export default mobileHeader;
+export default MobileHeader;

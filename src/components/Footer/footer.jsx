@@ -6,7 +6,9 @@ import footerLogo from "../../assets/img/footerLogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import footerKomshi from "../../assets/img/komshiFooter.png";
-function footer() {
+import { useLanguage } from "../../Context/ChangeLanguage";
+function Footer() {
+  const { toggleLang } = useLanguage();
   return (
     <>
       <div className="komshiLogo">
@@ -17,20 +19,28 @@ function footer() {
           <div className="footerItem1">
             <img src={phone} alt="phone" />
             <div className="Info">
-              <p>შეკვეთისთვის დაგვიკავშირდით</p>
+              <p>
+                {toggleLang === "ka"
+                  ? "შეკვეთისთვის დაგვიკავშირდით"
+                  : "Contact us to place your order"}
+              </p>
               <span
+                className="numbers"
                 onClick={() => (window.location.href = "tel:+995593215212")}
                 style={{ cursor: "pointer" }}
               >
-                + 995 593 215 212
+                + 995 593 215 212/ +995 599 550 107
               </span>
             </div>
           </div>
           <div className="footerItem1">
             <img src={gmail} alt="gmail" />
             <div className="Info">
-              <p>ან მოგვწერეთ</p>
-              <span>info.komshi@gmail.com</span>
+              <p>
+                {" "}
+                {toggleLang === "ka" ? "ან მოგვწერეთ" : "Or send us a message "}
+              </p>
+              <span>komshi.customers@gmail.com</span>
             </div>
           </div>
           <div className="footerItem2">
@@ -65,4 +75,4 @@ function footer() {
     </>
   );
 }
-export default footer;
+export default Footer;

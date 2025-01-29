@@ -56,6 +56,9 @@ ul {
   align-items: center;
   flex: 50;
 }
+.pages li {
+  font-size: 16px;
+}
 
 .pages ul {
   display: flex;
@@ -123,10 +126,23 @@ ul li::marker {
   background-color: rgba(85, 85, 85, 0.1);
 }
 .changeLanguage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-bottom: 5px;
+  transition: background-color 1s ease;
+}
+.changeLanguage button {
   font-family: mt-bold;
+  color: white;
+  background-color: rgba(107, 170, 169, 1);
+  padding: 20px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+.changeLanguage button:hover {
+  background-color: rgba(107, 170, 169, 0.509);
+}
+.changeLanguage button:active {
+  background-color: white;
   color: rgba(107, 170, 169, 1);
 }
 .basket {
@@ -205,8 +221,11 @@ ul li::marker {
     justify-content: start;
     margin-top: 10px;
   }
+  .pages li {
+    font-size: 14px;
+  }
   .title.active {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
 }
 
@@ -216,6 +235,7 @@ ul li::marker {
   }
   .contact {
     align-items: start;
+    padding: 80px 0 10px 0;
   }
   .contact p {
     font-size: 13px;
@@ -232,7 +252,7 @@ ul li::marker {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
   .burger {
     display: none;
   }

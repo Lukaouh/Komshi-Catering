@@ -1,46 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/headers/Header";
 import SecondHeader from "../../components/secondHeader/secondHeader";
 import { DATA } from "../../components/headers/DATA";
-
+import { getPhotos } from "../../components/scrolledPhotos/ScrollPhoto";
 import "../AboutUs/AboutUs.css";
 import Footer from "../../components/Footer/footer";
-import staff from "../../assets/img/advertising.jpeg";
-import aboutMe from "../../assets/img/aboutUs.jpeg";
-// import aboutMe2 from "../../assets/img/aboutUs2.jpeg";
-
 import { Container, Row, Col } from "react-bootstrap";
+import { useLanguage } from "../../Context/ChangeLanguage";
+import { AboutText } from "./AboutText";
 export default function AboutUs() {
+  const [images, setImages] = useState([]);
+  const { toggleLang } = useLanguage();
+  useEffect(() => {
+    getPhotos(setImages);
+  }, []);
   return (
     <>
       <Header id={DATA[1].id} />
-      <SecondHeader name={DATA[1]?.title} />
+      <SecondHeader name={DATA[1]?.[`title_${toggleLang}`]} />
       <Container>
         <div className="containerValue">
           <Row>
             <Col>
               <div className="LeftSide">
                 <h1>
-                  ქეითერინგ კომპანია <span className="komshi">„კომში“</span>
+                  {toggleLang === "ka" ? (
+                    <>
+                      ქეითერინგ კომპანია <span className="komshi">„კომში“</span>
+                    </>
+                  ) : (
+                    <>
+                      Catering Company <span className="komshi">„Komshi“</span>
+                    </>
+                  )}
                 </h1>
+
                 <div className="Paraghrap">
-                  <p>
-                    ტრაპეზარიას არომატული, ჯანსაღი, მრავალფეროვანი კერძები
-                    პირდაპირ ჩვენი სამზარეულოდან თქვენს მაგიდაზე მოხვდება.
-                    დანაყრდით და  „ითამაშეთ“ რჩეული გემოებით, ყველანაირი რისკის
-                    გარეშე. მაღალი სტანდარტების, სწრაფი მომსახურებისა და
-                    სანდოობის შენარჩუნება ჩვენი მთავარი პრიორიტეტია.ტრაპეზარიას
-                    არომატული, ჯანსაღი, მრავალფეროვანი კერძები პირდაპირ ჩვენი
-                    სამზარეულოდან თქვენს მაგიდაზე მოხვდება. დანაყრდით და 
-                    „ითამაშეთ“ რჩეული გემოებით, ყველანაირი რისკის გარეშე. მაღალი
-                    სტანდარტების, სწრაფი მომსახურებისა და სანდოობის შენარჩუნება
-                    ჩვენი მთავარი პრიორიტეტია. ტრაპეზარიას არომატული,ჯანსაღი,
-                    მრავალფეროვანი კერძები პირდაპირ ჩვენი სამზარეულოდან თქვენს
-                    მაგიდაზე მოხვდება. დანაყრდით და  „ითამაშეთ“ რჩეული გემოებით,
-                    ყველანაირი რისკის გარეშე. მაღალი სტანდარტების, სწრაფი
-                    მომსახურებისა და სანდოობის შენარჩუნება ჩვენი მთავარი
-                    პრიორიტეტია.
-                  </p>
+                  {AboutText.map((text) => (
+                    <p>{text[`name_${toggleLang}`]}</p>
+                  ))}
                 </div>
               </div>
             </Col>
@@ -48,13 +46,13 @@ export default function AboutUs() {
               <div className="RightSide">
                 <div className="GridContaier">
                   <div className="staffImg1">
-                    <img src={aboutMe} alt="staff"></img>
+                    <img src={images[6]} alt="staff"></img>
                   </div>
                   <div className="staffImg2">
-                    <img src={aboutMe} alt="staff"></img>
+                    <img src={images[4]} alt="staff"></img>
                   </div>
                   <div className="staffImg3">
-                    <img src={staff} alt="staff"></img>
+                    <img src={images[1]} alt="staff"></img>
                   </div>
                 </div>
               </div>

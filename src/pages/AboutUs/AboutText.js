@@ -1,0 +1,8 @@
+export const AboutText = [
+  {
+    name_ka:
+      "კომში არის ქეითერინგ კომპანია, რომელიც 2024 წლიდან აქტიურად ფუნქციონირებს ქართულ ბაზარზე. კომში მომხმარებელს სთავაზობს კორპორატიული კვების, ქეითერინგისა და ფურშეტის მიმართულებებს. კომში აერთიანებს მაღალკვალიფიციურ და შემოქმედებით გუნდს, რომელიც ხელს უწყობს კომპანიის განვითარებას. ამ დროისთვის ვთანამშრომლობთ ათამდე კომპანიასთან. ამასთანავე ყოველდღიურ რეჟიმში ვმასპინძლობთ კორპორატიულ წვეულებებს, ქორწილებსა და სხვადასხვა მასშტაბურ ღონისძიებებს. ჩვენი მისიაა ადამიანებს შევუქმნათ დაუვიწყარი მოგონებები ხარისხიანი პროდუქტითა და მომსახურებით. ჩვენთვის პრიორიტეტულია ჩვენი ხარისხით, კრეატიულობითა და სტუმართმოყვარეობით გადავაჭარბოთ მომხმარებელთა მოლოდინებს. კომშის მიზანია ადამიანები ამოგზაუროს გემრიელ სამყაროში, სადაც იქმნება ხანგრძლივი ემოციები, მოგონებები და ურთიერთობები.",
+    name_en:
+      "Komshi is a catering company that has been actively operating in the Georgian market since 2024. Komshi offers corporate catering, event catering, and buffet services to its customers. Komshi brings together a highly skilled and creative team that contributes to the company's development. Currently, we collaborate with over ten companies. Additionally, we host corporate parties, weddings, and various large-scale events on a daily basis. Our mission is to create unforgettable memories for people through high-quality products and services. Our goal is to exceed customer expectations with our quality, creativity, and hospitality. Komshi's mission is to take people on a flavorful journey, where lasting emotions, memories, and relationships are created.",
+  },
+];

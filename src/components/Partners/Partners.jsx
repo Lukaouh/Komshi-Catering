@@ -4,10 +4,11 @@ import axios from "axios";
 import "./Partners.css";
 import { useRef } from "react";
 import komshiLogo from "../../assets/img/komshiLogo.png";
+import { useLanguage } from "../../Context/ChangeLanguage";
 function Partners() {
   const scrollContainerRef = useRef(null);
   const [partners, setPartners] = useState([]);
-
+  const { toggleLang } = useLanguage();
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
@@ -48,11 +49,15 @@ function Partners() {
             gap: "5px",
           }}
         >
-          <h1>პარტნიორები</h1>
+          <h1>{toggleLang === "ka" ? "პარტნიორები" : "Partners"}</h1>
 
           <img src={komshiLogo} alt="Komshi Logo" />
         </div>
-        <p>ვიმოგზაუროთ გემრიელ სამყაროში</p>
+        <p>
+          {toggleLang === "ka"
+            ? "ვიმოგზაუროთ გემრიელ სამყაროში!"
+            : "Let's travel to the delicious world!"}
+        </p>
         <div
           style={{
             position: "relative",

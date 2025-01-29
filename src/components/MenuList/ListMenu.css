@@ -1,0 +1,142 @@
+.lunchBox {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  flex-direction: column;
+  box-shadow: 0 30px 50px 0 rgba(209, 209, 209, 0.4);
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 380px;
+}
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px; /* 3 equal columns */
+}
+
+.lunchBox img {
+  height: 230px;
+  width: 220px;
+  border-radius: 10px;
+}
+.card-text {
+  display: flex;
+  width: 100%;
+}
+.Itemh4 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 55px;
+  align-items: start;
+  text-align: start;
+}
+.Itemh4 h4 {
+  font-size: 16px;
+  color: rgba(128, 128, 128, 1) !important;
+  font-family: mt-medium;
+  padding-top: 10px;
+  background: white;
+}
+.lunchPrice {
+  width: 90%;
+  height: 100px;
+  display: flex;
+  z-index: 1000;
+  justify-content: space-between;
+  align-items: center;
+}
+.Lunchbuttons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.priceInNumber p {
+  font-size: 18px;
+  color: rgba(128, 128, 128, 1) !important;
+  font-family: nus-regular;
+  margin-top: 15px;
+}
+
+.priceInNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  width: 100px;
+  height: 35px;
+  border-radius: 30px;
+  background-color: white;
+}
+.Lunchbuttons input {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  padding-left: 10px;
+  font-family: nus-regular;
+  color: rgba(107, 170, 169, 1);
+}
+.Lunchbuttons button:first-child {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  height: 35px;
+  width: 50px;
+  background-color: white;
+  outline: none;
+  border-radius: 30px 0 0 30px;
+  font-family: nus-regular;
+  color: rgba(107, 170, 169, 1);
+}
+.Lunchbuttons button:last-child {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  height: 35px;
+  width: 50px;
+  background-color: white;
+  outline: none;
+  border-radius: 0 30px 30px 0;
+  font-family: nus-regular;
+  color: rgba(107, 170, 169, 1);
+}
+.addToBasket {
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  outline: none;
+  border-radius: 5px;
+  background-color: rgba(107, 170, 169, 1);
+  font-family: nus-medium;
+  font-size: 14px;
+  color: white;
+  height: 50px;
+  width: 80%;
+  cursor: pointer;
+}
+.addToBasket:active {
+  background-color: aliceblue;
+  color: rgba(107, 170, 169, 1);
+}
+
+@media (max-width: 1300px) {
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+  }
+}
+@media (max-width: 996px) {
+  .cardContainer {
+    justify-content: center;
+    align-items: center;
+  }
+  .Menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 567px) {
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

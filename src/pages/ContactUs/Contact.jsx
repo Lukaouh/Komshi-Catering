@@ -8,8 +8,9 @@ import gmail from "../../assets/img/email-2.png";
 import location from "../../assets/img/location.png";
 import axios from "axios";
 import ContactForm from "../../components/Contact-Form/ContactForm";
-
+import { useLanguage } from "../../Context/ChangeLanguage";
 function Contact() {
+  const { toggleLang } = useLanguage();
   const handleSubmited = async (data) => {
     try {
       const response = await axios.post(
@@ -27,31 +28,37 @@ function Contact() {
   return (
     <>
       <Header />
-      <SecondHeader name={DATA[4]?.title} />
+      <SecondHeader name={DATA[4]?.[`title_${toggleLang}`]} />
       <div className="container contactlayout">
         <div className="companyInfo">
           <div style={style.divStyle}>
             <img src={phone} alt="phoneLogo" style={style.imgStyle} />
             <div className="contactContent" style={{ paddingLeft: "20px" }}>
-              <p>შეკვეთისთვის დაგვიკავშირდით</p>
+              <p>
+                {toggleLang === "ka"
+                  ? "შეკვეთისთვის დაგვიკავშირდით"
+                  : "Contact us to place your order"}
+              </p>
               <span
                 onClick={() => (window.location.href = "tel:+995593215212")}
               >
-                + 995 593 215 212
+                + 995 593 215 212/ +995 599 550 107
               </span>
             </div>
           </div>
           <div style={style.divStyle}>
             <img src={gmail} alt="gmailLogo" style={style.imgStyle} />
             <div className="contactContent" style={{ paddingLeft: "20px" }}>
-              <p>ან მოგვწერეთ</p>
-              <span>info.komshi@gmail.com</span>
+              <p>
+                {toggleLang === "ka" ? "ან მოგვწერეთ" : "Or send us a message"}
+              </p>
+              <span>komshi.customers@gmail.com</span>
             </div>
           </div>
           <div style={style.divStyle}>
             <img src={location} alt="locationLog" style={style.imgStyle} />
             <div className="contactContent" style={{ paddingLeft: "20px" }}>
-              <p>მისამართი</p>
+              <p>{toggleLang === "ka" ? "მისამართი" : "Our Address"}</p>
               <span>Tbilisi,Ilia vekua st.27</span>
             </div>
           </div>

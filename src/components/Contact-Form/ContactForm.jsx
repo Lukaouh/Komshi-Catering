@@ -3,7 +3,8 @@ import "../Contact-Form/ContactForm.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { text } from "@fortawesome/fontawesome-svg-core";
+
+import { useLanguage } from "../../Context/ChangeLanguage";
 export default function ContactForm({ handleSubmited }) {
   const schema = yup.object({
     first_name: yup.string().required("Field is empty"),
@@ -19,18 +20,20 @@ export default function ContactForm({ handleSubmited }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
+  const { toggleLang } = useLanguage();
   return (
     <>
       <form onSubmit={handleSubmit((data) => handleSubmited(data))}>
         <div className="name" style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="first_name">სახელი</label>
+            <label htmlFor="first_name">
+              {toggleLang === "ka" ? "სახელი" : "Name"}
+            </label>
             <input
               type="text"
               id="first_name"
               name="first_name"
-              placeholder="სახელი"
+              placeholder={toggleLang === "ka" ? "სახელი" : "Name"}
               {...register("first_name", {
                 required: "Field is empty",
               })}
@@ -40,13 +43,15 @@ export default function ContactForm({ handleSubmited }) {
             )}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="last_name">გვარი</label>
+            <label htmlFor="last_name">
+              {toggleLang === "ka" ? "გვარი" : "Lastname"}
+            </label>
             <input
               type="text"
               id="last_name"
               name="last_name"
               {...register("last_name")}
-              placeholder="გვარი"
+              placeholder={toggleLang === "ka" ? "გვარი" : "Lastname"}
             ></input>
             {errors.last_name && (
               <p className="error">{errors.last_name.message}</p>
@@ -55,18 +60,22 @@ export default function ContactForm({ handleSubmited }) {
         </div>
         <div className="phone" style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="mobile">ტელ.ნომერი</label>
+            <label htmlFor="mobile">
+              {toggleLang === "ka" ? "ტელ.ნომერი" : "Phone"}
+            </label>
             <input
               type="text"
               id="mobile"
               name="mobile"
               {...register("mobile")}
-              placeholder="555 123 456"
+              placeholder={toggleLang === "ka" ? "ტელ.ნომერი" : "Phone"}
             ></input>
             {errors.mobile && <p className="error">{errors.mobile.message}</p>}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="email">ელ.ფოსტა</label>
+            <label htmlFor="email">
+              {toggleLang === "ka" ? "ელ.ფოსტა" : "Email"}
+            </label>
             <input
               type="text"
               id="email"
@@ -85,18 +94,28 @@ export default function ContactForm({ handleSubmited }) {
             alignItems: "start",
           }}
         >
-          <label htmlFor="text">ტექსტი</label>
+          <label htmlFor="text">
+            {" "}
+            {toggleLang === "ka" ? "ტექსტი" : "Text"}
+          </label>
           <textarea
             id="text"
             rows="7"
             cols="40"
             name="text"
             {...register("text", { required: "Field is empty" })}
-            placeholder="ჩემი აზრი თქვენს შესახებ..."
+            placeholder={
+              toggleLang === "ka"
+                ? "ჩემი აზრი თქვენს შესახებ..."
+                : "My feedback..."
+            }
           ></textarea>
         </div>
         {errors.text && <p className="error">{errors.text.message}</p>}
-        <button type="submit">გაგზავნა</button>
+        <button type="submit">
+          {" "}
+          {toggleLang === "ka" ? "გაგზავნა" : "Send"}
+        </button>
       </form>
     </>
   );

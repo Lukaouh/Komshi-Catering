@@ -9,20 +9,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 
 import HeaderItems from "./HeadersItem/HeaderItems";
-import MobileHeader from "./responsiveHeader/mobileHeader";
+import MobileHeader from "./ResponsiveHeader/MobileHeader";
+import { useLanguage } from "../../Context/ChangeLanguage";
 function Header() {
+  const { toggleLang, handleChangeLang } = useLanguage();
+
   const [activeMenu, setActiveMenu] = useState(false);
   function toggleMenu() {
     setActiveMenu(!activeMenu);
   }
   // const { pathname } = useLocation();
+
   return (
     <>
       <div className="mainContainer">
         <div className="container">
           <div className="contactInfo">
             <div className="contact">
-              <p>შეკვეთისთვის დაგვიკავშირდით</p>
+              <p>
+                {toggleLang === "ka"
+                  ? "შეკვეთისთვის დაგვიკავშირდით "
+                  : "Contact us to place your order"}
+              </p>
               <span
                 onClick={() => (window.location.href = "tel:+995593215212")}
               >
@@ -33,7 +41,9 @@ function Header() {
               <div className="lineHeight"></div>
             </div>
             <div className="changeLanguage">
-              <p>{true ? "ENG" : "GEO"}</p>
+              <button onClick={handleChangeLang}>
+                {toggleLang === "en" ? "GEO" : "ENG"}
+              </button>
             </div>
             <div className="line">
               <div className="lineHeight"></div>
@@ -61,7 +71,7 @@ function Header() {
                 <HeaderItems
                   path={item.path}
                   id={item.id}
-                  title={item.title}
+                  title={item[`title_${toggleLang}`]}
                   key={item.id}
                 />
               ))}
