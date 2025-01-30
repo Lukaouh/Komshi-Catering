@@ -10,13 +10,15 @@ import { Container, Row, Col } from "react-bootstrap";
 import Category from "../../components/Category/Category";
 import ListMenu from "../../components/MenuList/ListMenu";
 import { useLanguage } from "../../Context/ChangeLanguage";
+
 function Menu() {
   const { toggleLang } = useLanguage();
   const [category, setCategory] = useState([]);
   const [activeList, setActiveList] = useState(false);
   const [product, setProduct] = useState([]);
   const [search, setSearch] = useState("ყველა");
-
+  const [next, setNext] = useState();
+  const [previous, setPrevious] = useState();
   useEffect(() => {
     async function getRequest() {
       try {
@@ -42,6 +44,8 @@ function Menu() {
         );
         if (response.status >= 200 && response.status < 300) {
           setProduct(response.data.results);
+          setNext(response.data.next);
+          setPrevious(response.data.previous);
         }
       } catch (error) {
         window.alert("product is not available");
@@ -50,6 +54,25 @@ function Menu() {
     handleChildrenMenuList();
   }, [search]);
 
+  const nextPage = async () => {
+    if (!next) return;
+    try {
+      const response = await axios.get(next);
+      setProduct(() => [...response.data.results]);
+      setNext(response.data.next);
+      setPrevious(response.data.previous);
+    } catch (error) {}
+  };
+
+  const PrevPage = async () => {
+    if (!previous) return;
+    try {
+      const response = await axios.get(previous);
+      setProduct(response.data.results);
+      setPrevious(response.data.previous);
+      setNext(response.data.next);
+    } catch (error) {}
+  };
   const [values, setValues] = useState({});
   const handleChange = (id, newValue) => {
     setValues((prevValues) => ({
@@ -83,6 +106,12 @@ function Menu() {
                 values={values}
               />
             </Row>
+            <button onClick={nextPage} disabled={!next}>
+              {toggleLang === "ka" ? "შემდეგი" : "Next"}
+            </button>
+            <button onClick={PrevPage} disabled={!previous}>
+              {toggleLang === "ka" ? "უკან" : "Previous"}
+            </button>
           </div>
         </div>
       </Container>

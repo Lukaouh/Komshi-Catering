@@ -49,9 +49,12 @@ function Partners() {
             gap: "5px",
           }}
         >
-          <h1>{toggleLang === "ka" ? "პარტნიორები" : "Partners"}</h1>
-
-          <img src={komshiLogo} alt="Komshi Logo" />
+          <h1>
+            {toggleLang === "ka"
+              ? "-	პარტნიორი კომპანიები  "
+              : "Partner Companies"}
+            <img src={komshiLogo} alt="Komshi Logo" />
+          </h1>
         </div>
         <p>
           {toggleLang === "ka"
