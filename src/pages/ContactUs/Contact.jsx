@@ -12,9 +12,10 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 function Contact() {
   const { toggleLang } = useLanguage();
   const handleSubmited = async (data) => {
+    console.log(data);
     try {
       const response = await axios.post(
-        "http://34.118.255.0:8000/api/contact/contact/",
+        "http://34.38.239.195:8000/api/contact/contact/",
         data
       );
       if (response.status >= 200 && response.status < 300) {

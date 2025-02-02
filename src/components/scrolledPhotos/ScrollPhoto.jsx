@@ -4,7 +4,7 @@ import "../scrolledPhotos/ScrollPhoto.css";
 export async function getPhotos(setGallery) {
   try {
     const response = await axios.get(
-      "http://34.118.255.0:8000/api/store/images/"
+      "http://34.38.239.195:8000/api/store/images/"
     );
     if (response.status >= 200 && response.status < 300) {
       const image = response.data.map((item) => item.image);

@@ -10,7 +10,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import Category from "../../components/Category/Category";
 import ListMenu from "../../components/MenuList/ListMenu";
 import { useLanguage } from "../../Context/ChangeLanguage";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 function Menu() {
   const { toggleLang } = useLanguage();
   const [category, setCategory] = useState([]);
@@ -19,11 +20,12 @@ function Menu() {
   const [search, setSearch] = useState("ყველა");
   const [next, setNext] = useState();
   const [previous, setPrevious] = useState();
+
   useEffect(() => {
     async function getRequest() {
       try {
         const responseData = await axios.get(
-          "http://34.118.255.0:8000/api/store/category/"
+          "http://34.38.239.195:8000/api/store/category/"
         );
         setCategory(responseData.data);
         if (responseData.status >= 200 && responseData.status < 300) {
@@ -40,7 +42,7 @@ function Menu() {
     const handleChildrenMenuList = async () => {
       try {
         const response = await axios.get(
-          `http://34.118.255.0:8000/api/store/filter/products/?search=${search}`
+          `http://34.38.239.195:8000/api/store/filter/products/?search=${search}`
         );
         if (response.status >= 200 && response.status < 300) {
           setProduct(response.data.results);
@@ -73,6 +75,9 @@ function Menu() {
       setNext(response.data.next);
     } catch (error) {}
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [product]);
   const [values, setValues] = useState({});
   const handleChange = (id, newValue) => {
     setValues((prevValues) => ({
@@ -98,7 +103,7 @@ function Menu() {
               />
             }
           </div>
-          <div>
+          <div style={style.MenuDiv}>
             <Row style={{ paddingTop: "50px" }} className="MenuRow">
               <ListMenu
                 product={product}
@@ -106,12 +111,22 @@ function Menu() {
                 values={values}
               />
             </Row>
-            <button onClick={nextPage} disabled={!next}>
-              {toggleLang === "ka" ? "შემდეგი" : "Next"}
-            </button>
-            <button onClick={PrevPage} disabled={!previous}>
-              {toggleLang === "ka" ? "უკან" : "Previous"}
-            </button>
+            <div className="menuButtons" style={style.buttonDiv}>
+              <button onClick={PrevPage} disabled={!previous}>
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  style={{ paddingRight: "5px" }}
+                />
+                {toggleLang === "ka" ? "უკან" : "Previous"}
+              </button>
+              <button onClick={nextPage} disabled={!next}>
+                {toggleLang === "ka" ? "შემდეგი" : "Next"}
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  style={{ paddingLeft: "5px" }}
+                />
+              </button>
+            </div>
           </div>
         </div>
       </Container>
@@ -121,3 +136,17 @@ function Menu() {
 }
 
 export default Menu;
+const style = {
+  MenuDiv: {
+    display: "flex",
+    flexDirection: "column",
+    paddingBottom: "50px",
+  },
+  buttonDiv: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "end",
+    paddingTop: "30px",
+    gap: "10px",
+  },
+};

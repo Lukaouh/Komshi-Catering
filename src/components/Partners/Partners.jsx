@@ -23,7 +23,7 @@ function Partners() {
     const getPartners = async () => {
       try {
         const response = await axios.get(
-          "http://34.118.255.0:8000/api/store/partners/"
+          "http://34.38.239.195:8000/api/store/partners/"
         );
 
         if (response.status >= 200 && response.status < 300) {
@@ -51,7 +51,7 @@ function Partners() {
         >
           <h1>
             {toggleLang === "ka"
-              ? "-	პარტნიორი კომპანიები  "
+              ? "პარტნიორი კომპანიები  "
               : "Partner Companies"}
             <img src={komshiLogo} alt="Komshi Logo" />
           </h1>

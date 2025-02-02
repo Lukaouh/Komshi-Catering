@@ -15,6 +15,10 @@ input:-webkit-autofill {
   -webkit-text-fill-color: grey !important;
   font-family: num-regular !important;
 }
+input::placeholder,
+textarea::placeholder {
+  font-family: mt-medium;
+}
 .phone,
 .name,
 .text {
@@ -64,6 +68,11 @@ form button {
   color: #ffff;
   font-family: mt-bold;
   border-radius: 5px;
+}
+
+form button:active {
+  background-color: #ffff;
+  color: #6baaa9;
 }
 @media only screen and (max-width: 992px) {
   .contactForm {

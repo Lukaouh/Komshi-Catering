@@ -34,9 +34,7 @@ export default function ContactForm({ handleSubmited }) {
               id="first_name"
               name="first_name"
               placeholder={toggleLang === "ka" ? "სახელი" : "Name"}
-              {...register("first_name", {
-                required: "Field is empty",
-              })}
+              {...register("first_name")}
             ></input>
             {errors.first_name && (
               <p className="error">{errors.first_name.message}</p>

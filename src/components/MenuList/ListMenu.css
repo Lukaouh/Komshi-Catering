@@ -39,11 +39,23 @@
   padding-top: 10px;
   background: white;
 }
+
+.PopUp {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.PopUp button {
+  background-color: #fff;
+  border: none;
+  outline: none;
+  color: rgb(170, 170, 170);
+}
 .lunchPrice {
   width: 90%;
   height: 100px;
   display: flex;
-  z-index: 1000;
   justify-content: space-between;
   align-items: center;
 }
