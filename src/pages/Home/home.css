@@ -17,10 +17,12 @@
 
   width: 100%;
 }
-.content h1 {
+.content h1,
+.menuOnHome h1 {
   color: rgba(124, 124, 124, 1);
   font-size: 38px;
   font-family: mt-bold;
+  font-size: 48px;
 }
 .child2 {
   color: rgba(107, 170, 169, 1);
@@ -31,10 +33,12 @@
   color: rgba(124, 124, 124, 1);
   font-size: 28px;
 }
-.content p {
+.content p,
+.menuOnHome p {
   color: rgba(128, 128, 128, 1);
   font-family: nus-regular;
   padding-top: 10px;
+  font-size: 22px;
 }
 .buttonMenu {
   display: flex;
@@ -42,7 +46,8 @@
   align-items: center;
   padding-top: 10px;
 }
-.buttonMenu button {
+.buttonMenu button,
+.fullMenu {
   padding: 12px 35px 12px 35px;
   background-color: rgba(107, 170, 169, 1);
   border: none;
@@ -55,6 +60,11 @@
   letter-spacing: 1px;
 
   cursor: pointer;
+}
+.buttonMenu button:active,
+.fullMenu:active {
+  background-color: white;
+  color: rgba(128, 128, 128, 1);
 }
 .firstHalf {
   display: flex;

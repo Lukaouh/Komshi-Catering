@@ -51,7 +51,12 @@
   border: none;
   outline: none;
   color: rgb(170, 170, 170);
+  cursor: pointer;
 }
+.PopUp button:hover {
+  color: rgba(248, 201, 0, 1);
+}
+
 .lunchPrice {
   width: 90%;
   height: 100px;

@@ -1,0 +1,67 @@
+.BasketContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  z-index: 1000;
+}
+
+.BasketContents {
+  width: 350px;
+  max-width: 400px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  height: 100%;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 1s ease-in-out;
+  will-change: transform; /* Add this line */
+}
+.BasketContents h1 {
+  font-size: 24px;
+  border-bottom: 1px solid rgba(209, 209, 209, 0.5);
+  padding: 0 0 20px 5px;
+  font-family: mt-bold;
+  color: rgba(128, 128, 128, 1);
+}
+.BasketContents.open {
+  transform: translateX(0); /* Final state: on-screen */
+}
+
+.orderImage {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid rgba(209, 209, 209, 0.5);
+}
+.orderImage img {
+  width: 70px;
+  height: 65px;
+  border-radius: 5px;
+}
+.orderText {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+}
+
+.orderText p {
+  margin: 0;
+
+  font-family: mt-medium;
+  font-size: 16px;
+  color: grey;
+}
+
+.orderText span {
+  font-family: mt-bold;
+  font-size: 16px;
+  color: rgba(136, 136, 136, 0.515);
+}

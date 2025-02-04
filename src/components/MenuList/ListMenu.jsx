@@ -1,16 +1,20 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ListMenu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import PopUp from "../../components/PopUp/PopUp";
-function ListMenu({ product, values, handleChange }) {
+import { useScrollBasket } from "../../Context/ShowBasket";
+import Basket from "../Basket/Basket";
+function ListMenu({ product }) {
+  const { showBasket, setShowBasket } = useScrollBasket();
   const { toggleLang } = useLanguage();
-  const [popUp, setPopUp] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [ingredients, setIngredients] = useState([]);
+  const [values, setValues] = useState({});
+  const [orderCard, setOrderCard] = useState([]);
   const ListIngredients = async (id) => {
     try {
       const response = await axios.get(
@@ -18,12 +22,12 @@ function ListMenu({ product, values, handleChange }) {
       );
       if (response.status >= 200 && response.status < 300) {
         setIngredients(response.data.ingredients);
-        console.log(response.data.ingredients);
       }
     } catch (error) {
       window.alert("product is not available");
     }
   };
+
   const selectedItem = (product) => {
     setSelectedProduct(product);
     ListIngredients(product.id);
@@ -31,8 +35,21 @@ function ListMenu({ product, values, handleChange }) {
   const closePopUp = () => {
     setSelectedProduct(null);
   };
+
+  const handleChange = (id, newValue, minQuantity) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [id]: Math.max(newValue, minQuantity),
+    }));
+  };
+
+  const handleAddCard = (element) => {
+    setOrderCard((prevValue) => [...prevValue, element]);
+    setShowBasket(true);
+  };
   return (
     <div className="cardContainer">
+      {showBasket && <Basket orderCard={orderCard} />}
       {product.map((element, index) => (
         <div key={index}>
           <div
@@ -48,7 +65,9 @@ function ListMenu({ product, values, handleChange }) {
               <div className="PopUp">
                 {" "}
                 <button onClick={() => selectedItem(element)}>
-                  დეტალური აღწერა...
+                  {toggleLang == "ka"
+                    ? "დეტალური აღწერა..."
+                    : "View Ingredients... "}
                 </button>
               </div>
               <div className="lunchPrice">
@@ -59,25 +78,33 @@ function ListMenu({ product, values, handleChange }) {
                   {" "}
                   <button
                     onClick={() =>
-                      handleChange(element.id, values[element.id] - 1 || 10)
+                      handleChange(
+                        element.id,
+                        (values[element.id] ?? element.quantity) - 1,
+                        element.quantity
+                      )
                     }
                   >
                     -
                   </button>
                   <input
                     type="text"
+                    value={values[element.id] ?? element.quantity}
                     style={{ width: "50px", height: "35px" }}
-                    value={values[element.id] || 10}
                     onChange={(e) =>
-                      handleChange(element.id, Number(e.target.value))
+                      handleChange(
+                        element.id,
+                        Number(e.target.value),
+                        element.quantity
+                      )
                     }
                   />
                   <button
                     onClick={() =>
                       handleChange(
                         element.id,
-                        (values[element.id] || 10) + 1,
-                        console.log(values[element.id] + 1)
+                        (values[element.id] ?? element.quantity) + 1,
+                        element.quantity
                       )
                     }
                   >
@@ -87,9 +114,7 @@ function ListMenu({ product, values, handleChange }) {
               </div>
               <button
                 className="addToBasket"
-                onClick={() =>
-                  console.log("რაოდენობა", values[element.id], element.name_ka)
-                }
+                onClick={() => handleAddCard(element)}
               >
                 {" "}
                 <FontAwesomeIcon

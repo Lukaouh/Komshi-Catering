@@ -1,7 +1,7 @@
 import "../Home/home.css";
 import Header from "../../components/headers/Header";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/footer";
 import { useNavigate } from "react-router-dom";
 import HomeLogo from "../../assets/img/Vector (5).png";
@@ -11,9 +11,16 @@ import Services from "../../components/services/Services";
 import Partners from "../../components/Partners/Partners";
 import { Container, Row } from "react-bootstrap";
 import { useLanguage } from "../../Context/ChangeLanguage";
+import { useScrollBasket } from "../../Context/ShowBasket";
+import ListMenu from "../../components/MenuList/ListMenu";
+import axios from "axios";
+import komshiLogo from "../../assets/img/komshiLogo.png";
 function Home() {
   const { toggleLang } = useLanguage();
+  const { showBasket } = useScrollBasket();
   const { hash } = useLocation();
+  const [menu, setMenu] = useState([]);
+
   useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.substring(1));
@@ -22,10 +29,27 @@ function Home() {
       }
     }
   }, [hash]);
+
   const navigate = useNavigate();
   const MenuBtn = () => {
     navigate("/menu");
   };
+  const meanty = "ცომეული";
+  useEffect(() => {
+    const handleChildrenMenuList = async () => {
+      try {
+        const response = await axios.get(
+          `http://34.38.239.195:8000/api/store/filter/products/?search=${meanty}`
+        );
+        if (response.status >= 200 && response.status < 300) {
+          setMenu(response.data.results);
+        }
+      } catch (error) {
+        window.alert("product is not available");
+      }
+    };
+    handleChildrenMenuList();
+  }, []);
   return (
     <>
       <Header />
@@ -67,9 +91,34 @@ function Home() {
               <ScrollPhoto />
             </div>
           </Row>
+          <Row style={{ paddingTop: "50px" }} className="MenuRow"></Row>
         </Container>
       </div>
       <Services />
+      <Container
+        className="menuOnHome"
+        style={{ paddingTop: "150px", textAlign: "center" }}
+      >
+        <h1>
+          {toggleLang == "ka" ? "მენიუ" : "Menu"}
+          <img
+            src={komshiLogo}
+            alt="Komshi Logo"
+            style={{ paddingLeft: "5px" }}
+          />
+        </h1>
+        <p style={{ paddingBottom: "50px", paddingTop: "0" }}>
+          {toggleLang === "ka"
+            ? "ძირითადი მენიუ და შეთავაზებები"
+            : "Main Menu and Offers"}
+        </p>
+        <ListMenu product={menu} />
+        <div style={{ paddingTop: "50px" }}>
+          <button className="fullMenu" onClick={MenuBtn}>
+            {toggleLang === "ka" ? "ყველა პროდუქტი" : "All Product"}
+          </button>
+        </div>
+      </Container>
       <section id="partnership">
         <Partners />
       </section>

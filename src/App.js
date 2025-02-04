@@ -1,6 +1,7 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LanguageProvider } from "./Context/ChangeLanguage";
+import { BasketProvider } from "./Context/ShowBasket";
 import Home from "./pages/Home/home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Menu from "./pages/Menu/Menu";
@@ -31,7 +32,9 @@ function App() {
   return (
     <div className="App">
       <LanguageProvider>
-        <RouterProvider router={router} />
+        <BasketProvider>
+          <RouterProvider router={router} />
+        </BasketProvider>
       </LanguageProvider>
     </div>
   );

@@ -6,12 +6,13 @@ import { DATA } from "../../components/headers/DATA";
 import Footer from "../../components/Footer/footer";
 import { useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Category from "../../components/Category/Category";
 import ListMenu from "../../components/MenuList/ListMenu";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 function Menu() {
   const { toggleLang } = useLanguage();
   const [category, setCategory] = useState([]);
@@ -20,7 +21,7 @@ function Menu() {
   const [search, setSearch] = useState("ყველა");
   const [next, setNext] = useState();
   const [previous, setPrevious] = useState();
-
+  const [quantity, setQuantity] = useState();
   useEffect(() => {
     async function getRequest() {
       try {
@@ -48,6 +49,7 @@ function Menu() {
           setProduct(response.data.results);
           setNext(response.data.next);
           setPrevious(response.data.previous);
+          setQuantity(response.data.quantity);
         }
       } catch (error) {
         window.alert("product is not available");
@@ -78,13 +80,6 @@ function Menu() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [product]);
-  const [values, setValues] = useState({});
-  const handleChange = (id, newValue) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      [id]: Math.max(newValue, 10),
-    }));
-  };
 
   return (
     <>
@@ -105,11 +100,7 @@ function Menu() {
           </div>
           <div style={style.MenuDiv}>
             <Row style={{ paddingTop: "50px" }} className="MenuRow">
-              <ListMenu
-                product={product}
-                handleChange={handleChange}
-                values={values}
-              />
+              <ListMenu product={product} quantity={quantity} />
             </Row>
             <div className="menuButtons" style={style.buttonDiv}>
               <button onClick={PrevPage} disabled={!previous}>

@@ -11,9 +11,10 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import HeaderItems from "./HeadersItem/HeaderItems";
 import MobileHeader from "./ResponsiveHeader/MobileHeader";
 import { useLanguage } from "../../Context/ChangeLanguage";
+import { useScrollBasket } from "../../Context/ShowBasket";
 function Header() {
   const { toggleLang, handleChangeLang } = useLanguage();
-
+  const { showBasket, handleChangeBasket } = useScrollBasket();
   const [activeMenu, setActiveMenu] = useState(false);
   function toggleMenu() {
     setActiveMenu(!activeMenu);
@@ -49,7 +50,13 @@ function Header() {
               <div className="lineHeight"></div>
             </div>
             <div className="basket">
-              <img src={basket} alt="basket"></img>
+              <button
+                onClick={handleChangeBasket}
+                style={{ border: "none", outline: "none" }}
+              >
+                {" "}
+                <img src={basket} alt="basket"></img>
+              </button>
               <div className="circle">
                 <span>1</span>
               </div>
