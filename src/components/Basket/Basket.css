@@ -20,19 +20,26 @@
   background: #fff;
   height: 100%;
   z-index: 1000;
-  transform: translateX(100%);
-  transition: transform 1s ease-in-out;
-  will-change: transform; /* Add this line */
+  overflow-y: auto;
 }
-.BasketContents h1 {
-  font-size: 24px;
+.baskerHeader {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid rgba(209, 209, 209, 0.5);
   padding: 0 0 20px 5px;
+}
+.baskerHeader h2 {
+  font-size: 28px;
+  height: 0;
   font-family: mt-bold;
   color: rgba(128, 128, 128, 1);
 }
-.BasketContents.open {
-  transform: translateX(0); /* Final state: on-screen */
+.baskerHeader button {
+  border: none;
+  outline: none;
+  background-color: white;
+  height: auto;
+  margin-right: 10px;
 }
 
 .orderImage {
@@ -64,4 +71,23 @@
   font-family: mt-bold;
   font-size: 16px;
   color: rgba(136, 136, 136, 0.515);
+}
+
+.BasketContents::-webkit-scrollbar {
+  width: 8px;
+}
+
+.BasketContents::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.BasketContents::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.BasketContents::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 1);
+  cursor: pointer;
 }

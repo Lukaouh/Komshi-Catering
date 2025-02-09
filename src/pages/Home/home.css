@@ -9,6 +9,7 @@
   display: flex;
   width: 100%;
 }
+
 .content {
   display: flex;
   align-items: start;
@@ -17,6 +18,7 @@
 
   width: 100%;
 }
+
 .content h1,
 .menuOnHome h1 {
   color: rgba(124, 124, 124, 1);

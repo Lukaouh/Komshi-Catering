@@ -8,13 +8,13 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import PopUp from "../../components/PopUp/PopUp";
 import { useScrollBasket } from "../../Context/ShowBasket";
 import Basket from "../Basket/Basket";
-function ListMenu({ product }) {
+function ListMenu({ product, order, setOrder }) {
   const { showBasket, setShowBasket } = useScrollBasket();
   const { toggleLang } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [values, setValues] = useState({});
-  const [orderCard, setOrderCard] = useState([]);
+  const [orderList, setOrderList] = useState([]);
   const ListIngredients = async (id) => {
     try {
       const response = await axios.get(
@@ -43,13 +43,42 @@ function ListMenu({ product }) {
     }));
   };
 
-  const handleAddCard = (element) => {
-    setOrderCard((prevValue) => [...prevValue, element]);
+  // Suppose orderList is your accumulated state of items:
+
+  const PostMenuList = async (element) => {
+    const newItem = {
+      product: element.id,
+      quantity: values[element.id] ?? element.quantity,
+    };
+    let sessionId = localStorage.getItem("session_id");
+
+    try {
+      const response = await fetch(
+        "http://34.38.239.195:8000/api/order/cart/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(sessionId ? { "Session-ID": sessionId } : {}), // 🔹 Send session_id if exists
+          },
+          credentials: "include", // 🔹 Correct way to send cookies
+          body: JSON.stringify(newItem),
+        }
+      );
+
+      const data = await response.json();
+      if (!sessionId && data.session_id) {
+        localStorage.setItem("session_id", data.session_id);
+      }
+    } catch (error) {
+      console.error("Error posting menu:", error.message);
+    }
     setShowBasket(true);
   };
+
   return (
     <div className="cardContainer">
-      {showBasket && <Basket orderCard={orderCard} />}
+      {showBasket && <Basket order={order} setOrder={setOrder} />}
       {product.map((element, index) => (
         <div key={index}>
           <div
@@ -114,7 +143,7 @@ function ListMenu({ product }) {
               </div>
               <button
                 className="addToBasket"
-                onClick={() => handleAddCard(element)}
+                onClick={() => PostMenuList(element)}
               >
                 {" "}
                 <FontAwesomeIcon

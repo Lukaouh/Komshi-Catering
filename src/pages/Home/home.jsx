@@ -15,7 +15,9 @@ import { useScrollBasket } from "../../Context/ShowBasket";
 import ListMenu from "../../components/MenuList/ListMenu";
 import axios from "axios";
 import komshiLogo from "../../assets/img/komshiLogo.png";
-function Home() {
+import Basket from "../../components/Basket/Basket";
+
+function Home({ order, setOrder, setProduct, product }) {
   const { toggleLang } = useLanguage();
   const { showBasket } = useScrollBasket();
   const { hash } = useLocation();
@@ -52,7 +54,9 @@ function Home() {
   }, []);
   return (
     <>
-      <Header />
+      {showBasket && <Basket order={order} setOrder={setOrder} />}
+
+      <Header order={order} />
       <div className="mainDiv">
         <div className="styledBackground">
           <div className="styledBox">
@@ -112,7 +116,10 @@ function Home() {
             ? "ძირითადი მენიუ და შეთავაზებები"
             : "Main Menu and Offers"}
         </p>
-        <ListMenu product={menu} />
+        <div style={{ textAlign: "start" }}>
+          {" "}
+          <ListMenu product={menu} order={order} setOrder={setOrder} />
+        </div>
         <div style={{ paddingTop: "50px" }}>
           <button className="fullMenu" onClick={MenuBtn}>
             {toggleLang === "ka" ? "ყველა პროდუქტი" : "All Product"}

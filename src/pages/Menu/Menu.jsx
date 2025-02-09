@@ -13,15 +13,15 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-function Menu() {
+function Menu({ order, setOrder, product, setProduct }) {
   const { toggleLang } = useLanguage();
   const [category, setCategory] = useState([]);
   const [activeList, setActiveList] = useState(false);
-  const [product, setProduct] = useState([]);
   const [search, setSearch] = useState("ყველა");
   const [next, setNext] = useState();
   const [previous, setPrevious] = useState();
   const [quantity, setQuantity] = useState();
+
   useEffect(() => {
     async function getRequest() {
       try {
@@ -30,7 +30,6 @@ function Menu() {
         );
         setCategory(responseData.data);
         if (responseData.status >= 200 && responseData.status < 300) {
-          console.log("Request was successful");
         }
       } catch (error) {
         window.alert("Sorry, Menu page is not working in this moment :(");
@@ -83,7 +82,7 @@ function Menu() {
 
   return (
     <>
-      <Header />
+      <Header order={order} />
       <SecondHeader name={DATA[2]?.[`title_${toggleLang}`]} />
       <Container>
         <div className="Menu">
@@ -100,7 +99,12 @@ function Menu() {
           </div>
           <div style={style.MenuDiv}>
             <Row style={{ paddingTop: "50px" }} className="MenuRow">
-              <ListMenu product={product} quantity={quantity} />
+              <ListMenu
+                product={product}
+                quantity={quantity}
+                order={order}
+                setOrder={setOrder}
+              />
             </Row>
             <div className="menuButtons" style={style.buttonDiv}>
               <button onClick={PrevPage} disabled={!previous}>

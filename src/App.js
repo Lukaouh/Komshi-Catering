@@ -6,14 +6,27 @@ import Home from "./pages/Home/home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Menu from "./pages/Menu/Menu";
 import ContactUs from "./pages/ContactUs/Contact";
-
+import Basket from "./components/Basket/Basket";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 
 function App() {
+  const [order, setOrder] = useState([]);
+  const addItemToOrder = (item) => {
+    setOrder((prevOrder) => [...prevOrder, item]); // Ensure order is updated
+  };
+  const [product, setProduct] = useState([]);
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <Home
+          order={order}
+          setOrder={setOrder}
+          product={product}
+          setProduct={setProduct}
+        />
+      ),
     },
     {
       path: "/aboutUs",
@@ -21,7 +34,14 @@ function App() {
     },
     {
       path: "/menu",
-      element: <Menu />,
+      element: (
+        <Menu
+          order={order}
+          setOrder={setOrder}
+          product={product}
+          setProduct={setProduct}
+        />
+      ),
     },
     {
       path: "/contactUs",

@@ -6,13 +6,17 @@ import basket from "../../assets/img/Vector.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faX,
+  faShoppingBasket,
+} from "@fortawesome/free-solid-svg-icons";
 
 import HeaderItems from "./HeadersItem/HeaderItems";
 import MobileHeader from "./ResponsiveHeader/MobileHeader";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { useScrollBasket } from "../../Context/ShowBasket";
-function Header() {
+function Header({ order }) {
   const { toggleLang, handleChangeLang } = useLanguage();
   const { showBasket, handleChangeBasket } = useScrollBasket();
   const [activeMenu, setActiveMenu] = useState(false);
@@ -50,15 +54,18 @@ function Header() {
               <div className="lineHeight"></div>
             </div>
             <div className="basket">
-              <button
+              <FontAwesomeIcon
+                icon={faShoppingBasket}
                 onClick={handleChangeBasket}
-                style={{ border: "none", outline: "none" }}
-              >
-                {" "}
-                <img src={basket} alt="basket"></img>
-              </button>
+                style={{
+                  color: "rgba(124, 124, 124, 1)",
+                  width: "24px",
+                  height: "24px",
+                  cursor: "pointer",
+                }}
+              />
               <div className="circle">
-                <span>1</span>
+                <span>{order.length}</span>
               </div>
             </div>
           </div>
