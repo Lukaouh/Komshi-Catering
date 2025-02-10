@@ -36,33 +36,38 @@ function Cart({ order = [], values, setValues, setOrder }) {
           body: JSON.stringify(ItemId),
         }
       );
+
+      await getMenuList();
     } catch (error) {
-      console.log("errori mak ", error);
+      console.log("Error removing item:", error);
     }
     setShowBasket(true);
   };
-  useEffect(() => {
-    const getMenuList = async () => {
-      try {
-        const sessionId = localStorage.getItem("session_id");
 
-        const response = await axios.get(
-          "http://34.38.239.195:8000/api/order/cart/",
-          {
-            headers: { "Session-ID": sessionId },
-            credentials: "include",
-          }
-        );
-        setOrder(response.data?.items || []);
-      } catch (error) {
-        console.error(
-          "Menu is not sent to frontend:",
-          error.response?.data || error.message
-        );
-      }
-    };
+  const getMenuList = async () => {
+    try {
+      const sessionId = localStorage.getItem("session_id");
+
+      const response = await axios.get(
+        "http://34.38.239.195:8000/api/order/cart/",
+        {
+          headers: { "Session-ID": sessionId },
+          credentials: "include",
+        }
+      );
+      setOrder(response.data?.items || []);
+    } catch (error) {
+      console.error(
+        "Menu is not sent to frontend:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
+  useEffect(() => {
     getMenuList();
   }, []);
+
   return (
     <>
       <Header order={order} />

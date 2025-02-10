@@ -41,14 +41,37 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
       [id]: Math.max(newValue, minQuantity),
     }));
   };
+  useEffect(() => {
+    const getMenuList = async () => {
+      try {
+        const sessionId = localStorage.getItem("session_id");
+
+        const response = await axios.get(
+          "http://34.38.239.195:8000/api/order/cart/",
+          {
+            headers: { "Session-ID": sessionId },
+            credentials: "include",
+          }
+        );
+        setOrder(response.data?.items);
+      } catch (error) {
+        console.error(
+          "Menu is not sent to frontend:",
+          error.response?.data || error.message
+        );
+      }
+    };
+
+    getMenuList();
+  }, []);
 
   const PostMenuList = async (element) => {
     const newItem = {
       product: element.id,
       quantity: values[element.id] ?? element.quantity,
     };
-    let sessionId = localStorage.getItem("session_id");
 
+    let sessionId = localStorage.getItem("session_id");
     try {
       const response = await fetch(
         "http://34.38.239.195:8000/api/order/cart/",
@@ -62,35 +85,23 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
           body: JSON.stringify(newItem),
         }
       );
-      getMenuList();
+
       const data = await response.json();
       if (!sessionId && data.session_id) {
         localStorage.setItem("session_id", data.session_id);
       }
-    } catch (error) {
-      console.error("Error posting menu:", error.message);
-    }
-    setShowBasket(true);
-  };
-
-  const getMenuList = async () => {
-    try {
-      const sessionId = localStorage.getItem("session_id");
-
-      const response = await axios.get(
+      const updatedOrder = await axios.get(
         "http://34.38.239.195:8000/api/order/cart/",
         {
           headers: { "Session-ID": sessionId },
           credentials: "include",
         }
       );
-      setOrder(response.data?.items || []);
+      setOrder(updatedOrder.data?.items);
     } catch (error) {
-      console.error(
-        "Menu is not sent to frontend:",
-        error.response?.data || error.message
-      );
+      console.error("Error posting menu:", error.message);
     }
+    setShowBasket(true);
   };
 
   return (
