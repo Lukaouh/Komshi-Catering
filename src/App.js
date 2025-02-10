@@ -6,16 +6,15 @@ import Home from "./pages/Home/home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Menu from "./pages/Menu/Menu";
 import ContactUs from "./pages/ContactUs/Contact";
-import Basket from "./components/Basket/Basket";
+import Cart from "./pages/Cart/Cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
 function App() {
   const [order, setOrder] = useState([]);
-  const addItemToOrder = (item) => {
-    setOrder((prevOrder) => [...prevOrder, item]); // Ensure order is updated
-  };
   const [product, setProduct] = useState([]);
+  const [values, setValues] = useState({});
+  const [quantity, setQuantity] = useState();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -25,12 +24,14 @@ function App() {
           setOrder={setOrder}
           product={product}
           setProduct={setProduct}
+          quantity={quantity}
+          setQuantity={setQuantity}
         />
       ),
     },
     {
       path: "/aboutUs",
-      element: <AboutUs />,
+      element: <AboutUs order={order} setOrder={setOrder} />,
     },
     {
       path: "/menu",
@@ -40,12 +41,30 @@ function App() {
           setOrder={setOrder}
           product={product}
           setProduct={setProduct}
+          values={values}
+          setValues={setValues}
+          quantity={quantity}
+          setQuantity={setQuantity}
         />
       ),
     },
     {
       path: "/contactUs",
-      element: <ContactUs />,
+      element: <ContactUs order={order} setOrder={setOrder} />,
+    },
+    {
+      path: "/cart",
+      element: (
+        <Cart
+          order={order}
+          setOrder={setOrder}
+          product={product}
+          values={values}
+          setValues={setValues}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
+      ),
     },
   ]);
 

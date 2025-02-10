@@ -20,7 +20,6 @@
   background: #fff;
   height: 100%;
   z-index: 1000;
-  overflow-y: auto;
 }
 .baskerHeader {
   display: flex;
@@ -28,6 +27,7 @@
   border-bottom: 1px solid rgba(209, 209, 209, 0.5);
   padding: 0 0 20px 5px;
 }
+
 .baskerHeader h2 {
   font-size: 28px;
   height: 0;
@@ -72,22 +72,44 @@
   font-size: 16px;
   color: rgba(136, 136, 136, 0.515);
 }
-
-.BasketContents::-webkit-scrollbar {
+.product {
+  overflow: hidden;
+  overflow-y: auto;
+}
+.cartButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 20px 10px;
+}
+.goToCart {
+  width: 80%;
+  padding: 8px 0;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(118, 154, 153, 1);
+  color: white;
+  font-family: mt-bold;
+  cursor: pointer;
+}
+.product::-webkit-scrollbar {
   width: 8px;
 }
 
-.BasketContents::-webkit-scrollbar-track {
+.product::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
 
-.BasketContents::-webkit-scrollbar-thumb {
+.product::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 10px;
 }
 
-.BasketContents::-webkit-scrollbar-thumb:hover {
+.product::-webkit-scrollbar-thumb:hover {
   background: rgba(128, 128, 128, 1);
   cursor: pointer;
 }

@@ -13,14 +13,22 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-function Menu({ order, setOrder, product, setProduct }) {
+function Menu({
+  order,
+  setOrder,
+  product,
+  setProduct,
+  values,
+  setValues,
+  quantity,
+  setQuantity,
+}) {
   const { toggleLang } = useLanguage();
   const [category, setCategory] = useState([]);
   const [activeList, setActiveList] = useState(false);
   const [search, setSearch] = useState("ყველა");
   const [next, setNext] = useState();
   const [previous, setPrevious] = useState();
-  const [quantity, setQuantity] = useState();
 
   useEffect(() => {
     async function getRequest() {
@@ -104,6 +112,8 @@ function Menu({ order, setOrder, product, setProduct }) {
                 quantity={quantity}
                 order={order}
                 setOrder={setOrder}
+                setValues={setValues}
+                values={values}
               />
             </Row>
             <div className="menuButtons" style={style.buttonDiv}>

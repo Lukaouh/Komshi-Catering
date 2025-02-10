@@ -8,13 +8,12 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import PopUp from "../../components/PopUp/PopUp";
 import { useScrollBasket } from "../../Context/ShowBasket";
 import Basket from "../Basket/Basket";
-function ListMenu({ product, order, setOrder }) {
+import { InputsButton } from "../Inputs&Buttons/InputBtn";
+function ListMenu({ product, order, setOrder, values, setValues }) {
   const { showBasket, setShowBasket } = useScrollBasket();
   const { toggleLang } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [ingredients, setIngredients] = useState([]);
-  const [values, setValues] = useState({});
-  const [orderList, setOrderList] = useState([]);
   const ListIngredients = async (id) => {
     try {
       const response = await axios.get(
@@ -43,8 +42,6 @@ function ListMenu({ product, order, setOrder }) {
     }));
   };
 
-  // Suppose orderList is your accumulated state of items:
-
   const PostMenuList = async (element) => {
     const newItem = {
       product: element.id,
@@ -59,13 +56,13 @@ function ListMenu({ product, order, setOrder }) {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            ...(sessionId ? { "Session-ID": sessionId } : {}), // 🔹 Send session_id if exists
+            ...(sessionId ? { "Session-ID": sessionId } : {}),
           },
-          credentials: "include", // 🔹 Correct way to send cookies
+          credentials: "include",
           body: JSON.stringify(newItem),
         }
       );
-
+      getMenuList();
       const data = await response.json();
       if (!sessionId && data.session_id) {
         localStorage.setItem("session_id", data.session_id);
@@ -74,6 +71,26 @@ function ListMenu({ product, order, setOrder }) {
       console.error("Error posting menu:", error.message);
     }
     setShowBasket(true);
+  };
+
+  const getMenuList = async () => {
+    try {
+      const sessionId = localStorage.getItem("session_id");
+
+      const response = await axios.get(
+        "http://34.38.239.195:8000/api/order/cart/",
+        {
+          headers: { "Session-ID": sessionId },
+          credentials: "include",
+        }
+      );
+      setOrder(response.data?.items || []);
+    } catch (error) {
+      console.error(
+        "Menu is not sent to frontend:",
+        error.response?.data || error.message
+      );
+    }
   };
 
   return (
@@ -99,48 +116,12 @@ function ListMenu({ product, order, setOrder }) {
                     : "View Ingredients... "}
                 </button>
               </div>
-              <div className="lunchPrice">
-                <div className="priceInNumber">
-                  <p> {element.price}₾</p>
-                </div>
-                <div className="Lunchbuttons">
-                  {" "}
-                  <button
-                    onClick={() =>
-                      handleChange(
-                        element.id,
-                        (values[element.id] ?? element.quantity) - 1,
-                        element.quantity
-                      )
-                    }
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    value={values[element.id] ?? element.quantity}
-                    style={{ width: "50px", height: "35px" }}
-                    onChange={(e) =>
-                      handleChange(
-                        element.id,
-                        Number(e.target.value),
-                        element.quantity
-                      )
-                    }
-                  />
-                  <button
-                    onClick={() =>
-                      handleChange(
-                        element.id,
-                        (values[element.id] ?? element.quantity) + 1,
-                        element.quantity
-                      )
-                    }
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
+              <InputsButton
+                element={element}
+                element_id={element.id}
+                values={values}
+                handleChange={handleChange}
+              />
               <button
                 className="addToBasket"
                 onClick={() => PostMenuList(element)}

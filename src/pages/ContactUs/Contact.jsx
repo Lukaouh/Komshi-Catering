@@ -9,7 +9,7 @@ import location from "../../assets/img/location.png";
 import axios from "axios";
 import ContactForm from "../../components/Contact-Form/ContactForm";
 import { useLanguage } from "../../Context/ChangeLanguage";
-function Contact() {
+function Contact({ order }) {
   const { toggleLang } = useLanguage();
   const handleSubmited = async (data) => {
     console.log(data);
@@ -28,7 +28,7 @@ function Contact() {
 
   return (
     <>
-      <Header />
+      <Header order={order} />
       <SecondHeader name={DATA[4]?.[`title_${toggleLang}`]} />
       <div className="container contactlayout">
         <div className="companyInfo">

@@ -8,7 +8,7 @@ import Footer from "../../components/Footer/footer";
 import { Container, Row, Col } from "react-bootstrap";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { AboutText } from "./AboutText";
-export default function AboutUs() {
+export default function AboutUs({ order }) {
   const [images, setImages] = useState([]);
   const { toggleLang } = useLanguage();
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function AboutUs() {
   }, []);
   return (
     <>
-      <Header id={DATA[1].id} />
+      <Header id={DATA[1].id} order={order} />
       <SecondHeader name={DATA[1]?.[`title_${toggleLang}`]} />
       <Container>
         <div className="containerValue">

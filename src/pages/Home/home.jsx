@@ -16,8 +16,8 @@ import ListMenu from "../../components/MenuList/ListMenu";
 import axios from "axios";
 import komshiLogo from "../../assets/img/komshiLogo.png";
 import Basket from "../../components/Basket/Basket";
-
-function Home({ order, setOrder, setProduct, product }) {
+import { InputsButton } from "../../components/Inputs&Buttons/InputBtn";
+function Home({ order = [], setOrder, values = [], setValues, quantity }) {
   const { toggleLang } = useLanguage();
   const { showBasket } = useScrollBasket();
   const { hash } = useLocation();
@@ -118,7 +118,14 @@ function Home({ order, setOrder, setProduct, product }) {
         </p>
         <div style={{ textAlign: "start" }}>
           {" "}
-          <ListMenu product={menu} order={order} setOrder={setOrder} />
+          <ListMenu
+            product={menu}
+            quantity={quantity}
+            order={order}
+            setOrder={setOrder}
+            setValues={setValues}
+            values={values}
+          />
         </div>
         <div style={{ paddingTop: "50px" }}>
           <button className="fullMenu" onClick={MenuBtn}>
