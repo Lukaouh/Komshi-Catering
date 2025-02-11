@@ -26,6 +26,7 @@ function App() {
           setProduct={setProduct}
           quantity={quantity}
           setQuantity={setQuantity}
+          setValues={setValues}
         />
       ),
     },

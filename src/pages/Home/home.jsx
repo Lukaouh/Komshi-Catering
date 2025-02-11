@@ -16,13 +16,14 @@ import ListMenu from "../../components/MenuList/ListMenu";
 import axios from "axios";
 import komshiLogo from "../../assets/img/komshiLogo.png";
 import Basket from "../../components/Basket/Basket";
-import { InputsButton } from "../../components/Inputs&Buttons/InputBtn";
+
 function Home({ order = [], setOrder, values = [], setValues, quantity }) {
   const { toggleLang } = useLanguage();
   const { showBasket } = useScrollBasket();
   const { hash } = useLocation();
   const [menu, setMenu] = useState([]);
-
+  console.log("order", order);
+  console.log("setvalues", setValues);
   useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.substring(1));
@@ -95,7 +96,6 @@ function Home({ order = [], setOrder, values = [], setValues, quantity }) {
               <ScrollPhoto />
             </div>
           </Row>
-          <Row style={{ paddingTop: "50px" }} className="MenuRow"></Row>
         </Container>
       </div>
       <Services />

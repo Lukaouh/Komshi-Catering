@@ -1,0 +1,65 @@
+.cartForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  max-height: 650px;
+  background-color: white;
+  box-shadow: -10px 30px 50px rgba(209, 209, 209, 0.3);
+  border-radius: 15px;
+  padding: 50px 50px;
+}
+
+.customerName,
+.customerPhone,
+.customerEmail,
+.customerText {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.customerName input,
+.customerPhone input,
+.customerEmail input {
+  width: 250px;
+  height: 50px;
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(244, 247, 254, 1);
+  font-size: 16px;
+  padding-left: 20px;
+
+  font-family: num-regular;
+  color: grey;
+}
+.customerText textarea {
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(244, 247, 254, 1);
+  font-size: 14px;
+  padding-left: 10px;
+  padding-top: 10px;
+
+  font-family: num-regular;
+  color: grey;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: grey !important;
+  font-family: num-regular !important;
+}
+input::placeholder,
+textarea::placeholder {
+  font-family: mt-medium;
+  font-size: 14px;
+}
+
+.CartRight button {
+  font-size: 14px;
+}
+@media only screen and (max-width: 998px) {
+  .cartForm {
+    padding: 50px 150px;
+  }
+}

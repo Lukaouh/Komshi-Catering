@@ -46,7 +46,7 @@ function Basket({ values, order, setOrder }) {
           {" "}
           {order.length > 0 && (
             <buttons onClick={CartBtn} className="goToCart">
-              შეძენა
+              {toggleLang === "ka" ? "შეძენა" : "Order"}
             </buttons>
           )}
         </div>

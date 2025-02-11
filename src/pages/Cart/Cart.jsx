@@ -8,14 +8,15 @@ import { Container } from "react-bootstrap";
 import { InputsButton } from "../../components/Inputs&Buttons/InputBtn";
 import { useEffect } from "react";
 import axios from "axios";
+import CartForm from "../../components/Contact-Form/CartForm";
 
 function Cart({ order = [], values, setValues, setOrder }) {
   const { toggleLang } = useLanguage();
   const { showBasket, setShowBasket } = useScrollBasket();
-  const handleChange = (id, newValue, minQuantity) => {
+  const handleChange = (id, newValue) => {
     setValues((prevValues) => ({
       ...prevValues,
-      [id]: Math.max(newValue, minQuantity),
+      [id]: Math.max(newValue || 10, 10),
     }));
   };
   const removeItem = async (item) => {
@@ -67,53 +68,85 @@ function Cart({ order = [], values, setValues, setOrder }) {
   useEffect(() => {
     getMenuList();
   }, []);
-
+  const handleSubmitedMenu = async (data) => {
+    console.log(data);
+    try {
+      const sessionId = localStorage.getItem("session_id");
+      const response = await fetch(
+        "http://34.38.239.195:8000/api/order/cart/order/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(sessionId ? { "Session-ID": sessionId } : {}),
+          },
+          credentials: "include",
+          body: JSON.stringify(data),
+        }
+      );
+      if (response.status >= 200 && response.status < 300) {
+        window.alert("Thanks for your feedbeck!");
+      }
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
   return (
     <>
       <Header order={order} />
       <SecondHeader name={toggleLang === "ka" ? "კალათა" : "Basket"} />
-      <Container>
-        <div className="CartLeft">
-          <div className="cartHeader">
-            <h5>დასახელება</h5>
-            <h5>ფასი</h5>
-            <h5>რაოდენობა</h5>
-            <h5>ჯამი</h5>
-          </div>
-          {order.map((item) => (
-            <div className="cartItem" key={item.id}>
-              <button
-                className="removeBtn"
-                onClick={() => {
-                  removeItem(item);
-                }}
-              >
-                X
-              </button>
-              <img
-                src={item.product_image}
-                alt={item.product_name_ka}
-                className="cartImage"
-              />
-              <p className="productName">
-                {item[`product_name_${toggleLang}`]}
-              </p>
-              <div className="ItemContent">
-                <InputsButton
-                  element={item}
-                  element_id={item.product}
-                  values={values}
-                  handleChange={handleChange}
+
+      <main>
+        <div className="cartLay">
+          <div className="CartLeft">
+            {/* <div className="cartHeader">
+              <h5>დასახელება</h5>
+              <h5>ფასი</h5>
+              <h5>რაოდენობა</h5>
+              <h5>ჯამი</h5>
+            </div> */}
+            {order.map((item) => (
+              <div className="cartItem" key={item.id}>
+                <button
+                  className="removeBtn"
+                  onClick={() => {
+                    removeItem(item);
+                  }}
+                >
+                  X
+                </button>
+                <img
+                  src={item.product_image}
+                  alt={item.product_name_ka}
+                  className="cartImage"
                 />
-                <div className="totalPrice">
+                <div style={{ display: "flex", alignItems: "center" }}>
                   {" "}
-                  <p>{item.total_price}₾</p>
+                  <p className="productName">
+                    {item[`product_name_${toggleLang}`]}
+                  </p>
+                  <div className="ItemContent">
+                    <InputsButton
+                      element={item}
+                      element_id={item.product}
+                      values={values}
+                      handleChange={handleChange}
+                    />
+                    <div className="totalPrice">
+                      <p>{item.total_price}₾</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="CartRight">
+            {order.length > 0 && (
+              <CartForm handleSubmited={handleSubmitedMenu} />
+            )}
+          </div>
         </div>
-      </Container>
+      </main>
     </>
   );
 }

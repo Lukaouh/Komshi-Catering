@@ -65,7 +65,10 @@ function Contact({ order }) {
           </div>
         </div>
         <div className="contactForm">
-          <ContactForm handleSubmited={handleSubmited} />
+          <ContactForm
+            handleSubmited={handleSubmited}
+            textArea="ჩემი აზრი თქვენს შესახებ.."
+          />
         </div>
       </div>
       <Footer />

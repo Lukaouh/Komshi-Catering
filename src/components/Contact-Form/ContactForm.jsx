@@ -23,7 +23,10 @@ export default function ContactForm({ handleSubmited }) {
   const { toggleLang } = useLanguage();
   return (
     <>
-      <form onSubmit={handleSubmit((data) => handleSubmited(data))}>
+      <form
+        onSubmit={handleSubmit((data) => handleSubmited(data))}
+        className="ContactMainForm"
+      >
         <div className="name" style={{ display: "flex" }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <label htmlFor="first_name">
