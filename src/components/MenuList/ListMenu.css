@@ -59,7 +59,7 @@
 
 .lunchPrice {
   width: 90%;
-  height: 100px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;

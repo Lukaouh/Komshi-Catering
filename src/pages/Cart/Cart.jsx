@@ -99,12 +99,6 @@ function Cart({ order = [], values, setValues, setOrder }) {
       <main>
         <div className="cartLay">
           <div className="CartLeft">
-            {/* <div className="cartHeader">
-              <h5>დასახელება</h5>
-              <h5>ფასი</h5>
-              <h5>რაოდენობა</h5>
-              <h5>ჯამი</h5>
-            </div> */}
             {order.map((item) => (
               <div className="cartItem" key={item.id}>
                 <button
@@ -120,18 +114,27 @@ function Cart({ order = [], values, setValues, setOrder }) {
                   alt={item.product_name_ka}
                   className="cartImage"
                 />
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  {" "}
-                  <p className="productName">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                  className="ProductDetailInfo"
+                >
+                  <p className="productName" style={{ height: "20px" }}>
                     {item[`product_name_${toggleLang}`]}
                   </p>
+
                   <div className="ItemContent">
-                    <InputsButton
-                      element={item}
-                      element_id={item.product}
-                      values={values}
-                      handleChange={handleChange}
-                    />
+                    <div>
+                      {" "}
+                      <InputsButton
+                        element={item}
+                        element_id={item.product}
+                        values={values}
+                        handleChange={handleChange}
+                      />
+                    </div>
                     <div className="totalPrice">
                       <p>{item.total_price}₾</p>
                     </div>

@@ -46,7 +46,7 @@
   object-fit: cover;
 }
 .productName {
-  max-width: 160px;
+  width: auto;
   font-size: 16px;
   color: rgba(107, 170, 169, 1);
   font-family: mt-medium;
@@ -58,7 +58,6 @@
   align-items: center;
   border: 1px solid rgba(209, 209, 209, 0.5);
   border-radius: 20px;
-  /* width: 100%; */
 }
 .totalPrice p {
   height: 0;
@@ -88,4 +87,22 @@
   /* .CartRight {
     width: 100%;
   } */
+}
+@media only screen and (max-width: 576px) {
+  .totalPrice {
+    width: 90%;
+  }
+  .ItemContent {
+    display: block !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .cartLay {
+    align-items: start;
+  }
 }

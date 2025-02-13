@@ -6,7 +6,7 @@
   background-color: white;
   box-shadow: -10px 30px 50px rgba(209, 209, 209, 0.3);
   border-radius: 15px;
-  padding: 50px 50px;
+  padding: 50px;
 }
 
 .customerName,
@@ -61,5 +61,17 @@ textarea::placeholder {
 @media only screen and (max-width: 998px) {
   .cartForm {
     padding: 50px 150px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .cartForm {
+    padding: 50px 50px;
+  }
+}
+
+@media only screen and (max-width: 364px) {
+  .cartForm {
+    padding: 30px;
   }
 }
