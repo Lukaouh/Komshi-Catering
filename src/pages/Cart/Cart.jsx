@@ -4,13 +4,11 @@ import Header from "../../components/headers/Header";
 import SecondHeader from "../../components/secondHeader/secondHeader";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { useScrollBasket } from "../../Context/ShowBasket";
-import { Link } from "react-router-dom";
 import { InputsButton } from "../../components/Inputs&Buttons/InputBtn";
 import { useEffect } from "react";
 import axios from "axios";
 import CartForm from "../../components/Contact-Form/CartForm";
 import GoToMenuBtn from "../../components/GoToMenuBtn";
-import { object } from "yup";
 
 function Cart({ order = [], values, setValues, setOrder }) {
   const { toggleLang } = useLanguage();
@@ -21,6 +19,11 @@ function Cart({ order = [], values, setValues, setOrder }) {
       [id]: Math.max(newValue || 10, 10),
     }));
   };
+
+  const sum = order.reduce((acc, item) => {
+    return acc + item.total_price;
+  }, 0);
+
   const removeItem = async (item) => {
     const ItemId = {
       product: item.product,
@@ -177,7 +180,14 @@ function Cart({ order = [], values, setValues, setOrder }) {
                   </div>
                 </div>
               ))}
-              <div className="updateMenu">
+              <div
+                className="updateMenu"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
                 <button
                   onClick={() => {
                     updateOrderList(updatedOrderData);
@@ -185,6 +195,10 @@ function Cart({ order = [], values, setValues, setOrder }) {
                 >
                   {toggleLang === "ka" ? "კალათის განახლება" : "Cart update"}
                 </button>
+                <p>
+                  {toggleLang === "ka" ? "ჯამური თანხა : " : "Total Amount : "}
+                  <span> {sum}₾</span>
+                </p>
               </div>
             </div>
             <div className="CartRight">

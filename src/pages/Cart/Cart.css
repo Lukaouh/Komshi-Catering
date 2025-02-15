@@ -23,7 +23,7 @@
   padding: 10px;
   background-color: rgba(248, 201, 0, 1);
   color: white;
-  font-family: mt-regular;
+  font-family: nus-medium;
   cursor: pointer;
 }
 .updateMenu button:active {
@@ -97,6 +97,16 @@
   font-family: mt-bold;
   color: rgba(107, 170, 169, 1);
 }
+.updateMenu p {
+  font-size: 18px;
+  padding-right: 2px;
+  font-family: mt-bold;
+  color: rgba(107, 170, 169, 1);
+  height: 10px;
+}
+.updateMenu span {
+  color: rgba(248, 201, 0, 1);
+}
 @media only screen and (max-width: 998px) {
   .cartLay {
     display: flex;
@@ -130,7 +140,11 @@
   .removeBtn {
     padding-left: 10px;
   }
+  .updateMenu p {
+    font-size: 15px;
+  }
 }
+
 @media only screen and (max-width: 335px) {
   .cartLay {
     align-items: start;
