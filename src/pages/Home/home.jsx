@@ -101,6 +101,9 @@ function Home({ order = [], setOrder, values, setValues }) {
         </Container>
       </div>
       <Services />
+      <section id="partnership">
+        <Partners />
+      </section>
       <Container
         className="menuOnHome"
         style={{ paddingTop: "150px", textAlign: "center" }}
@@ -131,9 +134,6 @@ function Home({ order = [], setOrder, values, setValues }) {
 
         <GoToMenuBtn toggleLang={toggleLang} />
       </Container>
-      <section id="partnership">
-        <Partners />
-      </section>
       <Footer />
     </>
   );
