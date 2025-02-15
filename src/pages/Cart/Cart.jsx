@@ -4,15 +4,17 @@ import Header from "../../components/headers/Header";
 import SecondHeader from "../../components/secondHeader/secondHeader";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { useScrollBasket } from "../../Context/ShowBasket";
-import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { InputsButton } from "../../components/Inputs&Buttons/InputBtn";
 import { useEffect } from "react";
 import axios from "axios";
 import CartForm from "../../components/Contact-Form/CartForm";
+import GoToMenuBtn from "../../components/GoToMenuBtn";
+import { object } from "yup";
 
 function Cart({ order = [], values, setValues, setOrder }) {
   const { toggleLang } = useLanguage();
-  const { showBasket, setShowBasket } = useScrollBasket();
+  const { setShowBasket } = useScrollBasket();
   const handleChange = (id, newValue) => {
     setValues((prevValues) => ({
       ...prevValues,
@@ -23,7 +25,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
     const ItemId = {
       product: item.product,
     };
-    let sessionId = localStorage.getItem("session_id");
+    let sessionId = sessionStorage.getItem("session_id");
     try {
       const response = await fetch(
         "http://34.38.239.195:8000/api/order/cart/remove_item/",
@@ -47,7 +49,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
 
   const getMenuList = async () => {
     try {
-      const sessionId = localStorage.getItem("session_id");
+      const sessionId = sessionStorage.getItem("session_id");
 
       const response = await axios.get(
         "http://34.38.239.195:8000/api/order/cart/",
@@ -65,13 +67,44 @@ function Cart({ order = [], values, setValues, setOrder }) {
     }
   };
 
+  const updatedOrderData = order.map((item) => {
+    return {
+      product: item.product,
+      quantity: values[item.product] || item.quantity,
+    };
+  });
+  const updateOrderList = async (updatedOrderData) => {
+    const sessionId = sessionStorage.getItem("session_id") || null;
+    try {
+      const response = await fetch(
+        "http://34.38.239.195:8000/api/order/cart/",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            ...(sessionId ? { "Session-ID": sessionId } : {}),
+          },
+          credentials: "include",
+          body: JSON.stringify(updatedOrderData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+      await getMenuList();
+    } catch (error) {
+      console.error("Error updating order:", error.message);
+    }
+  };
+
   useEffect(() => {
     getMenuList();
   }, []);
   const handleSubmitedMenu = async (data) => {
     console.log(data);
     try {
-      const sessionId = localStorage.getItem("session_id");
+      const sessionId = sessionStorage.getItem("session_id");
       const response = await fetch(
         "http://34.38.239.195:8000/api/order/cart/order/",
         {
@@ -91,67 +124,97 @@ function Cart({ order = [], values, setValues, setOrder }) {
       window.alert(error.message);
     }
   };
+
   return (
     <>
       <Header order={order} />
       <SecondHeader name={toggleLang === "ka" ? "კალათა" : "Basket"} />
 
       <main>
-        <div className="cartLay">
-          <div className="CartLeft">
-            {order.map((item) => (
-              <div className="cartItem" key={item.id}>
-                <button
-                  className="removeBtn"
-                  onClick={() => {
-                    removeItem(item);
-                  }}
-                >
-                  X
-                </button>
-                <img
-                  src={item.product_image}
-                  alt={item.product_name_ka}
-                  className="cartImage"
-                />
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                  className="ProductDetailInfo"
-                >
-                  <p className="productName" style={{ height: "20px" }}>
-                    {item[`product_name_${toggleLang}`]}
-                  </p>
+        {order.length > 0 ? (
+          <div className="cartLay">
+            <div className="CartLeft">
+              {order.map((item, index) => (
+                <div className="cartItem" key={index}>
+                  <button
+                    className="removeBtn"
+                    onClick={() => {
+                      removeItem(item);
+                    }}
+                  >
+                    X
+                  </button>
+                  <img
+                    src={item.product_image}
+                    alt={item.product_name_ka}
+                    className="cartImage"
+                  />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                    className="ProductDetailInfo"
+                  >
+                    <p className="productName" style={{ height: "20px" }}>
+                      {item[`product_name_${toggleLang}`]}
+                    </p>
 
-                  <div className="ItemContent">
-                    <div>
-                      {" "}
-                      <InputsButton
-                        element={item}
-                        element_id={item.product}
-                        values={values}
-                        handleChange={handleChange}
-                      />
-                    </div>
-                    <div className="totalPrice">
-                      <p>{item.total_price}₾</p>
+                    <div className="PriceAndQuantity">
+                      <div>
+                        {" "}
+                        <InputsButton
+                          element={item}
+                          element_id={item.product}
+                          values={values}
+                          handleChange={handleChange}
+                        />
+                      </div>
+                      <div className="totalPrice">
+                        <p>{item.total_price}₾</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+              ))}
+              <div className="updateMenu">
+                <button
+                  onClick={() => {
+                    updateOrderList(updatedOrderData);
+                  }}
+                >
+                  კალათის განახლება
+                </button>
               </div>
-            ))}
-          </div>
-          <div className="CartRight">
-            {order.length > 0 && (
+            </div>
+            <div className="CartRight">
               <CartForm handleSubmited={handleSubmitedMenu} />
-            )}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div style={style.orderEmpty}>
+            <h3 className="emptyCart">
+              {toggleLang === "ka"
+                ? "კალათა ცარიელია, გთხოვთ აირჩიეთ პროდუქტი მენიუდან"
+                : "Basket is empty, Please choose products from the menu"}
+            </h3>
+            <GoToMenuBtn toggleLang={toggleLang} />
+          </div>
+        )}
       </main>
     </>
   );
 }
 
 export default Cart;
+
+const style = {
+  orderEmpty: {
+    display: "flex",
+    textAlign: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    width: "100%",
+    paddingTop: "50px",
+  },
+};

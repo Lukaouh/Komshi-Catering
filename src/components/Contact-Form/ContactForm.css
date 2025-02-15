@@ -121,6 +121,9 @@ form button:active {
   .contactContent span {
     font-size: 18px;
   }
+  .ContactMainForm {
+    padding: 0 2px 70px 2px;
+  }
 }
 .error {
   font-family: mt-bold;

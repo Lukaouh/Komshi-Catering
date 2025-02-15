@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
 import "./Basket.css";
 import { useScrollBasket } from "../../Context/ShowBasket";
 import { useLanguage } from "../../Context/ChangeLanguage";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-function Basket({ values, order, setOrder }) {
+function Basket({ values, order }) {
   const { toggleLang } = useLanguage();
-  const { showBasket, setShowBasket, handleChangeBasket } = useScrollBasket();
+  const { showBasket, handleChangeBasket } = useScrollBasket();
   const navigate = useNavigate();
 
   const CartBtn = () => {

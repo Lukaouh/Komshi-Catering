@@ -14,7 +14,7 @@ function App() {
   const [order, setOrder] = useState([]);
   const [product, setProduct] = useState([]);
   const [values, setValues] = useState({});
-  const [quantity, setQuantity] = useState();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -24,9 +24,8 @@ function App() {
           setOrder={setOrder}
           product={product}
           setProduct={setProduct}
-          quantity={quantity}
-          setQuantity={setQuantity}
           setValues={setValues}
+          values={values}
         />
       ),
     },
@@ -44,8 +43,6 @@ function App() {
           setProduct={setProduct}
           values={values}
           setValues={setValues}
-          quantity={quantity}
-          setQuantity={setQuantity}
         />
       ),
     },
@@ -62,8 +59,6 @@ function App() {
           product={product}
           values={values}
           setValues={setValues}
-          quantity={quantity}
-          setQuantity={setQuantity}
         />
       ),
     },

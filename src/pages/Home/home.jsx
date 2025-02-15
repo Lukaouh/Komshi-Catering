@@ -16,14 +16,16 @@ import ListMenu from "../../components/MenuList/ListMenu";
 import axios from "axios";
 import komshiLogo from "../../assets/img/komshiLogo.png";
 import Basket from "../../components/Basket/Basket";
+import GoToMenuBtn from "../../components/GoToMenuBtn";
 
-function Home({ order = [], setOrder, values = [], setValues, quantity }) {
+function Home({ order = [], setOrder, values, setValues }) {
   const { toggleLang } = useLanguage();
   const { showBasket } = useScrollBasket();
   const { hash } = useLocation();
   const [menu, setMenu] = useState([]);
   console.log("order", order);
-  console.log("setvalues", setValues);
+  console.log("values", values);
+
   useEffect(() => {
     if (hash) {
       const element = document.getElementById(hash.substring(1));
@@ -120,18 +122,14 @@ function Home({ order = [], setOrder, values = [], setValues, quantity }) {
           {" "}
           <ListMenu
             product={menu}
-            quantity={quantity}
             order={order}
             setOrder={setOrder}
             setValues={setValues}
             values={values}
           />
         </div>
-        <div style={{ paddingTop: "50px" }}>
-          <button className="fullMenu" onClick={MenuBtn}>
-            {toggleLang === "ka" ? "ყველა პროდუქტი" : "All Product"}
-          </button>
-        </div>
+
+        <GoToMenuBtn toggleLang={toggleLang} />
       </Container>
       <section id="partnership">
         <Partners />

@@ -13,16 +13,7 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-function Menu({
-  order,
-  setOrder,
-  product,
-  setProduct,
-  values,
-  setValues,
-  quantity,
-  setQuantity,
-}) {
+function Menu({ order, setOrder, product, setProduct, values, setValues }) {
   const { toggleLang } = useLanguage();
   const [category, setCategory] = useState([]);
   const [activeList, setActiveList] = useState(false);
@@ -56,7 +47,6 @@ function Menu({
           setProduct(response.data.results);
           setNext(response.data.next);
           setPrevious(response.data.previous);
-          setQuantity(response.data.quantity);
         }
       } catch (error) {
         window.alert("product is not available");
@@ -109,7 +99,6 @@ function Menu({
             <Row style={{ paddingTop: "50px" }} className="MenuRow">
               <ListMenu
                 product={product}
-                quantity={quantity}
                 order={order}
                 setOrder={setOrder}
                 setValues={setValues}

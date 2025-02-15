@@ -44,7 +44,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
   useEffect(() => {
     const getMenuList = async () => {
       try {
-        const sessionId = localStorage.getItem("session_id");
+        const sessionId = sessionStorage.getItem("session_id");
 
         const response = await axios.get(
           "http://34.38.239.195:8000/api/order/cart/",
@@ -71,7 +71,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
       quantity: values[element.id] ?? element.quantity,
     };
 
-    let sessionId = localStorage.getItem("session_id");
+    let sessionId = sessionStorage.getItem("session_id");
     try {
       const response = await fetch(
         "http://34.38.239.195:8000/api/order/cart/",
@@ -88,7 +88,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
 
       const data = await response.json();
       if (!sessionId && data.session_id) {
-        localStorage.setItem("session_id", data.session_id);
+        sessionStorage.setItem("session_id", data.session_id);
       }
       const updatedOrder = await axios.get(
         "http://34.38.239.195:8000/api/order/cart/",

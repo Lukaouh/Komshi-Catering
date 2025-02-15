@@ -13,7 +13,23 @@
   padding-top: 30px;
   padding-left: 20px;
 }
-
+.updateMenu {
+  padding-top: 20px;
+}
+.updateMenu button {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(248, 201, 0, 1);
+  color: white;
+  font-family: mt-regular;
+  cursor: pointer;
+}
+.updateMenu button:active {
+  color: rgba(209, 209, 209, 0.5);
+  background-color: rgba(248, 203, 0, 0.163);
+}
 .cartHeader {
   display: flex;
 
@@ -34,7 +50,8 @@
   border-bottom: 1px solid #ddd;
   gap: 10px;
 }
-.ItemContent {
+
+.PriceAndQuantity {
   width: 50%;
   display: flex;
   align-items: center;
@@ -73,6 +90,12 @@
   border: none;
   color: rgba(107, 170, 169, 1);
   cursor: pointer;
+  padding-left: 10px;
+}
+
+.emptyCart {
+  font-family: mt-bold;
+  color: rgba(107, 170, 169, 1);
 }
 @media only screen and (max-width: 998px) {
   .cartLay {
@@ -92,16 +115,23 @@
   .totalPrice {
     width: 90%;
   }
-  .ItemContent {
+  .PriceAndQuantity {
     display: block !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100% !important;
   }
-}
+  .Wrap {
+    display: flex;
+    flex-direction: column;
+  }
 
-@media only screen and (max-width: 416px) {
+  .removeBtn {
+    padding-left: 10px;
+  }
+}
+@media only screen and (max-width: 335px) {
   .cartLay {
     align-items: start;
   }

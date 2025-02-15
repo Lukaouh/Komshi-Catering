@@ -93,10 +93,13 @@ export default function CartForm({ handleSubmited }) {
           ></textarea>
         </div>
         {errors.text && <p className="error">{errors.text.message}</p>}
-        <button type="submit">
+        <div style={{ paddingTop: "20px" }}>
           {" "}
-          {toggleLang === "ka" ? "შეკვეთის გაფორმება" : "Processed our order"}
-        </button>
+          <button type="submit">
+            {" "}
+            {toggleLang === "ka" ? "შეკვეთის გაფორმება" : "Processed our order"}
+          </button>
+        </div>
       </form>
     </>
   );
