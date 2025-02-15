@@ -183,7 +183,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
                     updateOrderList(updatedOrderData);
                   }}
                 >
-                  კალათის განახლება
+                  {toggleLang === "ka" ? "კალათის განახლება" : "Cart update"}
                 </button>
               </div>
             </div>
