@@ -121,7 +121,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
         }
       );
       if (response.status >= 200 && response.status < 300) {
-        window.alert("Thanks for your feedbeck!");
+        window.alert("Your order has been placed successfully!");
       }
     } catch (error) {
       window.alert(error.message);

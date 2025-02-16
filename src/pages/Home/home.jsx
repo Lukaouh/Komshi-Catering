@@ -106,7 +106,7 @@ function Home({ order = [], setOrder, values, setValues }) {
       </section>
       <Container
         className="menuOnHome"
-        style={{ paddingTop: "150px", textAlign: "center" }}
+        style={{ paddingTop: "50px", textAlign: "center" }}
       >
         <h1>
           {toggleLang == "ka" ? "მენიუ" : "Menu"}
