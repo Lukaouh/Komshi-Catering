@@ -13,10 +13,10 @@ import GoToMenuBtn from "../../components/GoToMenuBtn";
 function Cart({ order = [], values, setValues, setOrder }) {
   const { toggleLang } = useLanguage();
   const { setShowBasket } = useScrollBasket();
-  const handleChange = (id, newValue) => {
+  const handleChange = (id, newValue, quantity) => {
     setValues((prevValues) => ({
       ...prevValues,
-      [id]: Math.max(newValue || 10, 10),
+      [id]: Math.max(newValue || 10, quantity),
     }));
   };
 
