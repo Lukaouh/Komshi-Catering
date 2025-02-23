@@ -61,7 +61,6 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
         );
       }
     };
-
     getMenuList();
   }, []);
 

@@ -18,7 +18,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
   const [category, setCategory] = useState([]);
   const [activeList, setActiveList] = useState(false);
   const [search, setSearch] = useState("ყველა");
-  const [next, setNext] = useState();
+  const [nextUrl, setNextUrl] = useState();
   const [previous, setPrevious] = useState();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
         );
         if (response.status >= 200 && response.status < 300) {
           setProduct(response.data.results);
-          setNext(response.data.next);
+          setNextUrl(response.data.next);
           setPrevious(response.data.previous);
         }
       } catch (error) {
@@ -56,11 +56,11 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
   }, [search]);
 
   const nextPage = async () => {
-    if (!next) return;
+    if (!nextUrl) return;
     try {
-      const response = await axios.get(next);
+      const response = await axios.get(nextUrl);
       setProduct(() => [...response.data.results]);
-      setNext(response.data.next);
+      setNextUrl(response.data.next);
       setPrevious(response.data.previous);
     } catch (error) {}
   };
@@ -71,7 +71,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
       const response = await axios.get(previous);
       setProduct(response.data.results);
       setPrevious(response.data.previous);
-      setNext(response.data.next);
+      setNextUrl(response.data.next);
     } catch (error) {}
   };
   useEffect(() => {
@@ -105,22 +105,24 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
                 values={values}
               />
             </Row>
-            <div className="menuButtons" style={style.buttonDiv}>
-              <button onClick={PrevPage} disabled={!previous}>
-                <FontAwesomeIcon
-                  icon={faArrowLeft}
-                  style={{ paddingRight: "5px" }}
-                />
-                {toggleLang === "ka" ? "უკან" : "Previous"}
-              </button>
-              <button onClick={nextPage} disabled={!next}>
-                {toggleLang === "ka" ? "შემდეგი" : "Next"}
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  style={{ paddingLeft: "5px" }}
-                />
-              </button>
-            </div>
+            {product.length >= 12 && (
+              <div className="menuButtons" style={style.buttonDiv}>
+                <button onClick={PrevPage} disabled={!previous}>
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    style={{ paddingRight: "5px" }}
+                  />
+                  {toggleLang === "ka" ? "უკან" : "Previous"}
+                </button>
+                <button onClick={nextPage} disabled={!nextUrl}>
+                  {toggleLang === "ka" ? "შემდეგი" : "Next"}
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    style={{ paddingLeft: "5px" }}
+                  />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </Container>

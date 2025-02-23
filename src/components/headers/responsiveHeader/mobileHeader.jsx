@@ -45,7 +45,6 @@ function MobileHeader() {
             color: "#6baaa9",
             paddingLeft: "10px",
           }}
-          ს
         >
           <FontAwesomeIcon icon={faInstagram} size="2x" />
         </a>

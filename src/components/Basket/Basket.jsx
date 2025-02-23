@@ -4,11 +4,34 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-function Basket({ values, order }) {
+import axios from "axios";
+import { useEffect } from "react";
+function Basket({ values, order, setOrder }) {
   const { toggleLang } = useLanguage();
   const { showBasket, handleChangeBasket } = useScrollBasket();
   const navigate = useNavigate();
+  useEffect(() => {
+    const getMenuList = async () => {
+      try {
+        const sessionId = sessionStorage.getItem("session_id");
 
+        const response = await axios.get(
+          "http://34.38.239.195:8000/api/order/cart/",
+          {
+            headers: { "Session-ID": sessionId },
+            credentials: "include",
+          }
+        );
+        setOrder(response.data?.items);
+      } catch (error) {
+        console.error(
+          "Menu is not sent to frontend:",
+          error.response?.data || error.message
+        );
+      }
+    };
+    getMenuList();
+  }, []);
   const CartBtn = () => {
     navigate("/cart");
   };
@@ -24,9 +47,9 @@ function Basket({ values, order }) {
         <div className="product">
           {" "}
           {order?.length > 0
-            ? order.map((item) => (
-                <div className="orderImage" key={item?.id}>
-                  <img src={item?.product_image} alt="" />
+            ? order.map((item, index) => (
+                <div className="orderImage" key={index}>
+                  <img src={item?.product_image} alt="product" />
                   <div className="orderText">
                     <p>{item?.[`product_name_${toggleLang}`]}</p>
 
@@ -42,9 +65,9 @@ function Basket({ values, order }) {
         <div className="cartButton">
           {" "}
           {order.length > 0 && (
-            <buttons onClick={CartBtn} className="goToCart">
+            <button onClick={CartBtn} className="goToCart">
               {toggleLang === "ka" ? "შეძენა" : "Order"}
-            </buttons>
+            </button>
           )}
         </div>
       </div>

@@ -23,8 +23,6 @@ function Home({ order = [], setOrder, values, setValues }) {
   const { showBasket } = useScrollBasket();
   const { hash } = useLocation();
   const [menu, setMenu] = useState([]);
-  console.log("order", order);
-  console.log("values", values);
 
   useEffect(() => {
     if (hash) {
@@ -83,7 +81,7 @@ function Home({ order = [], setOrder, values, setValues }) {
                 </h1>
                 <p>
                   {toggleLang === "ka"
-                    ? "კომპანია „კომში“ გთავაზობთ საკვებით უზრუნველყოფას ნებისმიერი სახის ღონისძიებისთის"
+                    ? "კომპანია „კომში“ გთავაზობთ საკვებით უზრუნველყოფას ნებისმიერი სახის ღონისძიებისთვის"
                     : " „Komshi“ provides catering services for all types of occasions."}
                 </p>
                 <div className="buttonMenu">
@@ -106,7 +104,11 @@ function Home({ order = [], setOrder, values, setValues }) {
       </section>
       <Container
         className="menuOnHome"
-        style={{ paddingTop: "50px", textAlign: "center" }}
+        style={{
+          paddingTop: "50px",
+          textAlign: "center",
+          paddingBottom: "50px",
+        }}
       >
         <h1>
           {toggleLang == "ka" ? "მენიუ" : "Menu"}
