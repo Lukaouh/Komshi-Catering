@@ -15,7 +15,7 @@ function Contact({ order }) {
     console.log(data);
     try {
       const response = await axios.post(
-        "http://34.38.239.195:8000/api/contact/contact/",
+        "https://komshii.com/api/contact/contact/",
         data
       );
       if (response.status >= 200 && response.status < 300) {

@@ -17,7 +17,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
   const ListIngredients = async (id) => {
     try {
       const response = await axios.get(
-        `http://34.38.239.195:8000/api/store/products/${id}`
+        `https://komshii.com/api/store/products/${id}`
       );
       if (response.status >= 200 && response.status < 300) {
         setIngredients(response.data.ingredients);
@@ -47,7 +47,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
         const sessionId = sessionStorage.getItem("session_id");
 
         const response = await axios.get(
-          "http://34.38.239.195:8000/api/order/cart/",
+          "https://komshii.com/api/order/cart/",
           {
             headers: { "Session-ID": sessionId },
             credentials: "include",
@@ -72,25 +72,22 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
 
     let sessionId = sessionStorage.getItem("session_id");
     try {
-      const response = await fetch(
-        "http://34.38.239.195:8000/api/order/cart/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            ...(sessionId ? { "Session-ID": sessionId } : {}),
-          },
-          credentials: "include",
-          body: JSON.stringify(newItem),
-        }
-      );
+      const response = await fetch("https://komshii.com/api/order/cart/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(sessionId ? { "Session-ID": sessionId } : {}),
+        },
+        credentials: "include",
+        body: JSON.stringify(newItem),
+      });
 
       const data = await response.json();
       if (!sessionId && data.session_id) {
         sessionStorage.setItem("session_id", data.session_id);
       }
       const updatedOrder = await axios.get(
-        "http://34.38.239.195:8000/api/order/cart/",
+        "https://komshii.com/api/order/cart/",
         {
           headers: { "Session-ID": sessionId },
           credentials: "include",

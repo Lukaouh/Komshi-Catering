@@ -3,9 +3,7 @@ import axios from "axios";
 import "../scrolledPhotos/ScrollPhoto.css";
 export async function getPhotos(setGallery) {
   try {
-    const response = await axios.get(
-      "http://34.38.239.195:8000/api/store/images/"
-    );
+    const response = await axios.get("https://komshii.com/api/store/images/");
     if (response.status >= 200 && response.status < 300) {
       const image = response.data.map((item) => item.image);
       setGallery(image);

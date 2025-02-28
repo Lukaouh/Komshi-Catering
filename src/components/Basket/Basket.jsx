@@ -16,7 +16,7 @@ function Basket({ values, order, setOrder }) {
         const sessionId = sessionStorage.getItem("session_id");
 
         const response = await axios.get(
-          "http://34.38.239.195:8000/api/order/cart/",
+          "https://komshii.com/api/order/cart/",
           {
             headers: { "Session-ID": sessionId },
             credentials: "include",

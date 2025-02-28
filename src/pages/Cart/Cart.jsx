@@ -31,7 +31,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
     let sessionId = sessionStorage.getItem("session_id");
     try {
       const response = await fetch(
-        "http://34.38.239.195:8000/api/order/cart/remove_item/",
+        "https://komshii.com/api/order/cart/remove_item/",
         {
           method: "POST",
           headers: {
@@ -54,13 +54,10 @@ function Cart({ order = [], values, setValues, setOrder }) {
     try {
       const sessionId = sessionStorage.getItem("session_id");
 
-      const response = await axios.get(
-        "http://34.38.239.195:8000/api/order/cart/",
-        {
-          headers: { "Session-ID": sessionId },
-          credentials: "include",
-        }
-      );
+      const response = await axios.get("https://komshii.com/api/order/cart/", {
+        headers: { "Session-ID": sessionId },
+        credentials: "include",
+      });
       setOrder(response.data?.items || []);
     } catch (error) {
       console.error(
@@ -79,18 +76,15 @@ function Cart({ order = [], values, setValues, setOrder }) {
   const updateOrderList = async (updatedOrderData) => {
     const sessionId = sessionStorage.getItem("session_id") || null;
     try {
-      const response = await fetch(
-        "http://34.38.239.195:8000/api/order/cart/",
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            ...(sessionId ? { "Session-ID": sessionId } : {}),
-          },
-          credentials: "include",
-          body: JSON.stringify(updatedOrderData),
-        }
-      );
+      const response = await fetch("https://komshii.com/api/order/cart/", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          ...(sessionId ? { "Session-ID": sessionId } : {}),
+        },
+        credentials: "include",
+        body: JSON.stringify(updatedOrderData),
+      });
 
       if (!response.ok) {
         throw new Error(`Request failed with status ${response.status}`);
@@ -109,7 +103,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
     try {
       const sessionId = sessionStorage.getItem("session_id");
       const response = await fetch(
-        "http://34.38.239.195:8000/api/order/cart/order/",
+        "https://komshii.com/api/order/cart/order/",
         {
           method: "POST",
           headers: {

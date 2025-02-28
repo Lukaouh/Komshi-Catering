@@ -23,7 +23,7 @@ function Partners() {
     const getPartners = async () => {
       try {
         const response = await axios.get(
-          "http://34.38.239.195:8000/api/store/partners/"
+          "https://komshii.com/api/store/partners/"
         );
 
         if (response.status >= 200 && response.status < 300) {

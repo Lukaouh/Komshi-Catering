@@ -25,7 +25,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
     async function getRequest() {
       try {
         const responseData = await axios.get(
-          "http://34.38.239.195:8000/api/store/category/"
+          "https://komshii.com/api/store/category/"
         );
         setCategory(responseData.data);
         if (responseData.status >= 200 && responseData.status < 300) {
@@ -41,7 +41,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
     const handleChildrenMenuList = async () => {
       try {
         const response = await axios.get(
-          `http://34.38.239.195:8000/api/store/filter/products/?search=${search}`
+          `https://komshii.com/api/store/filter/products/?search=${search}`
         );
         if (response.status >= 200 && response.status < 300) {
           setProduct(response.data.results);
