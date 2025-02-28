@@ -20,9 +20,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
     }));
   };
 
-  const sum = order.reduce((acc, item) => {
-    return acc + item.total_price;
-  }, 0);
+  const sum = order.reduce((acc, item) => acc + item.total_price, 0).toFixed(2);
 
   const removeItem = async (item) => {
     const ItemId = {
