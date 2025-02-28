@@ -42,8 +42,8 @@ function Cart({ order = [], values, setValues, setOrder }) {
           body: JSON.stringify(ItemId),
         }
       );
-
       await getMenuList();
+      console.log(response.ok);
     } catch (error) {
       console.log("Error removing item:", error);
     }

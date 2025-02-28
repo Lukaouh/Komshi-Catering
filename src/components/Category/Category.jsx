@@ -4,9 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronUp,
   faChevronDown,
-  faBasketShopping,
   faBars,
-  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { Container } from "react-bootstrap";
@@ -57,8 +55,14 @@ export default function Category({
               ) : (
                 <div className="hasChildren">
                   <p>{item[`name_${toggleLang}`]}</p>
-                  <a
-                    style={{ cursor: "pointer" }}
+                  <button
+                    style={{
+                      cursor: "pointer",
+                      border: "none",
+                      outline: "none",
+                      background: "white",
+                      paddingBottom: "15px",
+                    }}
                     onClick={() => {
                       setActiveList(!activeList);
                     }}
@@ -74,7 +78,7 @@ export default function Category({
                         style={{ color: "grey" }}
                       />
                     )}
-                  </a>
+                  </button>
                 </div>
               )}
 

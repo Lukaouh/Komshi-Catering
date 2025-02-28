@@ -111,14 +111,14 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
             style={{ paddingTop: "10px" }}
           >
             <div className="lunchBox">
-              <img src={element.image} />
+              <img src={element.image} alt="element" />
               <div className="Itemh4">
                 <h4 className="cardTitle">{element[`name_${toggleLang}`]}</h4>
               </div>
               <div className="PopUp">
                 {" "}
                 <button onClick={() => selectedItem(element)}>
-                  {toggleLang == "ka"
+                  {toggleLang === "ka"
                     ? "დეტალური აღწერა..."
                     : "View Ingredients... "}
                 </button>

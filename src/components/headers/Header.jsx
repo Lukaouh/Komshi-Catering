@@ -1,8 +1,6 @@
 import "./header.css";
 import { DATA } from "./DATA";
 import logo from "../../assets/img/header logo.png";
-import basket from "../../assets/img/Vector.png";
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +16,7 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 import { useScrollBasket } from "../../Context/ShowBasket";
 function Header({ order }) {
   const { toggleLang, handleChangeLang } = useLanguage();
-  const { showBasket, handleChangeBasket } = useScrollBasket();
+  const { handleChangeBasket } = useScrollBasket();
   const [activeMenu, setActiveMenu] = useState(false);
   function toggleMenu() {
     setActiveMenu(!activeMenu);
@@ -37,9 +35,9 @@ function Header({ order }) {
                   : "Contact us to place your order"}
               </p>
               <span
-                onClick={() => (window.location.href = "tel:+995593215212")}
+                onClick={() => (window.location.href = "tel:+995599550107")}
               >
-                + 995 593 215 212
+                + 995 599 550 107
               </span>
             </div>
             <div className="line">

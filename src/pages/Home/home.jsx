@@ -111,7 +111,7 @@ function Home({ order = [], setOrder, values, setValues }) {
         }}
       >
         <h1>
-          {toggleLang == "ka" ? "მენიუ" : "Menu"}
+          {toggleLang === "ka" ? "მენიუ" : "Menu"}
           <img
             src={komshiLogo}
             alt="Komshi Logo"

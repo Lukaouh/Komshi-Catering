@@ -1,4 +1,4 @@
-import style from "../Contact-Form/CartForm.css";
+import "../Contact-Form/CartForm.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
