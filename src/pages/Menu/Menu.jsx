@@ -58,19 +58,19 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
   const nextPage = async () => {
     if (!nextUrl) return;
     try {
-      const response = await axios.get(nextUrl);
+      const secureUrl = nextUrl.replace(/^http:/, "https:");
+      const response = await axios.get(secureUrl);
       setProduct(() => [...response.data.results]);
       setNextUrl(response.data.next);
       setPrevious(response.data.previous);
-    } catch (error) {
-      console.log("ar nextavs");
-    }
+    } catch (error) {}
   };
 
   const PrevPage = async () => {
     if (!previous) return;
     try {
-      const response = await axios.get(previous);
+      const secureUrl = previous.replace(/^http:/, "https:");
+      const response = await axios.get(secureUrl);
       setProduct(response.data.results);
       setPrevious(response.data.previous);
       setNextUrl(response.data.next);
@@ -107,7 +107,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
                 values={values}
               />
             </Row>
-            {product.length >= 12 && (
+            {product.length >= 1 && (
               <div className="menuButtons" style={style.buttonDiv}>
                 <button onClick={PrevPage} disabled={!previous}>
                   <FontAwesomeIcon
