@@ -19,12 +19,17 @@
   background-color: rgba(118, 154, 153, 1);
   color: white;
 }
+.menuButtons {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding-top: 30px;
+  gap: 10px;
+}
+.menuButtons button {
+  cursor: pointer;
+}
 
-/* @media only screen and (min-width: 1000px) {
-  .MenuRow {
-    justify-content: center;
-  }
-} */
 @media only screen and (min-width: 1300px) {
   .MenuRow {
     padding-left: 50px;
@@ -40,5 +45,10 @@
 @media only screen and (max-width: 997px) {
   .MenuRow {
     padding-left: 0px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .menuButtons {
+    width: 90%;
   }
 }

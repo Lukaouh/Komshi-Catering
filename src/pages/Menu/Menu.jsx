@@ -108,7 +108,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
               />
             </Row>
             {product.length >= 1 && (
-              <div className="menuButtons" style={style.buttonDiv}>
+              <div className="menuButtons">
                 <button onClick={PrevPage} disabled={!previous}>
                   <FontAwesomeIcon
                     icon={faArrowLeft}
