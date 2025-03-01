@@ -12,7 +12,6 @@ import { useLanguage } from "../../Context/ChangeLanguage";
 function Contact({ order }) {
   const { toggleLang } = useLanguage();
   const handleSubmited = async (data) => {
-    console.log(data);
     try {
       const response = await axios.post(
         "https://komshii.com/api/contact/contact/",

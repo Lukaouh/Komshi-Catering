@@ -42,9 +42,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
       );
       await getMenuList();
       console.log(response.ok);
-    } catch (error) {
-      console.log("Error removing item:", error);
-    }
+    } catch (error) {}
     setShowBasket(true);
   };
 
@@ -97,7 +95,6 @@ function Cart({ order = [], values, setValues, setOrder }) {
     getMenuList();
   }, []);
   const handleSubmitedMenu = async (data) => {
-    console.log(data);
     try {
       const sessionId = sessionStorage.getItem("session_id");
       const response = await fetch(

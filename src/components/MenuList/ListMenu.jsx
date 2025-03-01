@@ -54,12 +54,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
           }
         );
         setOrder(response.data?.items);
-      } catch (error) {
-        console.error(
-          "Menu is not sent to frontend:",
-          error.response?.data || error.message
-        );
-      }
+      } catch (error) {}
     };
     getMenuList();
   }, []);

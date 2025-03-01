@@ -42,7 +42,7 @@ function Home({ order = [], setOrder, values, setValues }) {
     const handleChildrenMenuList = async () => {
       try {
         const response = await axios.get(
-          `http://34.38.239.195:8000/api/store/filter/products/?search=${meanty}`
+          `https://komshii.com/api/store/filter/products/?search=${meanty}`
         );
         if (response.status >= 200 && response.status < 300) {
           setMenu(response.data.results);

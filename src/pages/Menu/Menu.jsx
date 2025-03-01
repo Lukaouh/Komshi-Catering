@@ -62,7 +62,9 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
       setProduct(() => [...response.data.results]);
       setNextUrl(response.data.next);
       setPrevious(response.data.previous);
-    } catch (error) {}
+    } catch (error) {
+      console.log("ar nextavs");
+    }
   };
 
   const PrevPage = async () => {
