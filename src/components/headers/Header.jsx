@@ -11,7 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import HeaderItems from "./HeadersItem/HeaderItems";
-import MobileHeader from "./ResponsiveHeader/MobileHeader";
+import Mobileheader from "./mobileHeader";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { useScrollBasket } from "../../Context/ShowBasket";
 function Header({ order }) {
@@ -93,7 +93,7 @@ function Header({ order }) {
       </div>
       <div className={activeMenu ? "showNavbar" : "mobileNavabar"}>
         <div className="headerItemsMob">
-          <MobileHeader />
+          <Mobileheader />
         </div>
       </div>
     </>

@@ -1,11 +1,11 @@
 import React from "react";
 import "./MobileHeader.css";
-import HeaderItems from "../HeadersItem/HeaderItems";
-import { DATA } from "../DATA";
+import HeaderItems from "./HeadersItem/HeaderItems";
+import { DATA } from "./DATA";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { useLanguage } from "../../../Context/ChangeLanguage";
-function MobileHeader() {
+import { useLanguage } from "../../Context/ChangeLanguage";
+function Mobileheader() {
   const { toggleLang } = useLanguage();
   return (
     <div className="mobHeader">
@@ -53,4 +53,4 @@ function MobileHeader() {
   );
 }
 
-export default MobileHeader;
+export default Mobileheader;
