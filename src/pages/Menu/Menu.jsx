@@ -61,7 +61,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
     try {
       const secureUrl = nextUrl.replace(/^http:/, "https:");
       const response = await axios.get(secureUrl);
-      setProduct(() => [...response.data.results]);
+      setProduct([...response.data.results]);
       setNextUrl(response.data.next);
       setPrevious(response.data.previous);
     } catch (error) {}
