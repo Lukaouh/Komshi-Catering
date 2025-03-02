@@ -36,8 +36,8 @@ export default function AboutUs({ order }) {
                 </h1>
 
                 <div className="Paraghrap">
-                  {AboutText.map((text) => (
-                    <p>{text[`name_${toggleLang}`]}</p>
+                  {AboutText.map((text, index) => (
+                    <p key={index}>{text[`name_${toggleLang}`]}</p>
                   ))}
                 </div>
               </div>
