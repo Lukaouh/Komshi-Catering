@@ -5,7 +5,7 @@ import SecondHeader from "../../components/secondHeader/secondHeader";
 import { useLanguage } from "../../Context/ChangeLanguage";
 import { useScrollBasket } from "../../Context/ShowBasket";
 import { InputsButton } from "../../components/Inputs&Buttons/InputBtn";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import axios from "axios";
 import CartForm from "../../components/Contact-Form/CartForm";
 import GoToMenuBtn from "../../components/GoToMenuBtn";
@@ -46,7 +46,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
     setShowBasket(true);
   };
 
-  const getMenuList = async () => {
+  const getMenuList = useCallback(async () => {
     try {
       const sessionId = sessionStorage.getItem("session_id");
 
@@ -54,14 +54,19 @@ function Cart({ order = [], values, setValues, setOrder }) {
         headers: { "Session-ID": sessionId },
         credentials: "include",
       });
-      setOrder(response.data?.items || []);
+
+      setOrder(response.data?.items);
     } catch (error) {
       console.error(
         "Menu is not sent to frontend:",
         error.response?.data || error.message
       );
     }
-  };
+  }, [setOrder]); // Dependency array ensures stability
+
+  useEffect(() => {
+    getMenuList();
+  }, [getMenuList]); // Now stable
 
   const updatedOrderData = order.map((item) => {
     return {
@@ -93,7 +98,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
 
   useEffect(() => {
     getMenuList();
-  }, []);
+  }, [getMenuList]);
   const handleSubmitedMenu = async (data) => {
     try {
       const sessionId = sessionStorage.getItem("session_id");

@@ -41,6 +41,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
       [id]: Math.max(newValue, minQuantity),
     }));
   };
+
   useEffect(() => {
     const getMenuList = async () => {
       try {
@@ -57,7 +58,7 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
       } catch (error) {}
     };
     getMenuList();
-  }, []);
+  }, [setOrder]);
 
   const PostMenuList = async (element) => {
     const newItem = {

@@ -31,7 +31,7 @@ function Basket({ values, order, setOrder }) {
       }
     };
     getMenuList();
-  }, []);
+  }, [setOrder]);
   const CartBtn = () => {
     navigate("/cart");
   };

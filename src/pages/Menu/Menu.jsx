@@ -27,6 +27,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
         const responseData = await axios.get(
           "https://komshii.com/api/store/category/"
         );
+
         setCategory(responseData.data);
         if (responseData.status >= 200 && responseData.status < 300) {
         }
@@ -53,7 +54,7 @@ function Menu({ order, setOrder, product, setProduct, values, setValues }) {
       }
     };
     handleChildrenMenuList();
-  }, [search]);
+  }, [search, setProduct]);
 
   const nextPage = async () => {
     if (!nextUrl) return;
@@ -139,12 +140,5 @@ const style = {
     display: "flex",
     flexDirection: "column",
     paddingBottom: "50px",
-  },
-  buttonDiv: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "end",
-    paddingTop: "30px",
-    gap: "10px",
   },
 };
