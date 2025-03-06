@@ -50,7 +50,11 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
         const response = await axios.get(
           "https://komshii.com/api/order/cart/",
           {
-            headers: { "Session-ID": sessionId },
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              ...(sessionId ? { "Session-ID": sessionId } : {}),
+            },
             credentials: "include",
           }
         );
@@ -85,7 +89,10 @@ function ListMenu({ product, order, setOrder, values, setValues }) {
       const updatedOrder = await axios.get(
         "https://komshii.com/api/order/cart/",
         {
-          headers: { "Session-ID": sessionId },
+          headers: {
+            "Content-Type": "application/json",
+            ...(sessionId ? { "Session-ID": sessionId } : {}),
+          },
           credentials: "include",
         }
       );
