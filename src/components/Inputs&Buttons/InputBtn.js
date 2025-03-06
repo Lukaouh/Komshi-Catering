@@ -10,7 +10,8 @@ export const InputsButton = ({ element_id, element, values, handleChange }) => {
             handleChange(
               element_id,
               (values[element_id] ?? element.quantity) - 1,
-              element.quantity
+              element.quantity,
+              element.product_description
             )
           }
         >
@@ -21,7 +22,12 @@ export const InputsButton = ({ element_id, element, values, handleChange }) => {
           value={values[element_id] ?? element.quantity}
           style={{ width: "50px", height: "35px" }}
           onChange={(e) =>
-            handleChange(element_id, Number(e.target.value), element.quantity)
+            handleChange(
+              element_id,
+              Number(e.target.value),
+              element.quantity,
+              element.product_description
+            )
           }
         />
         <button
@@ -29,7 +35,8 @@ export const InputsButton = ({ element_id, element, values, handleChange }) => {
             handleChange(
               element_id,
               (values[element_id] ?? element.quantity) + 1,
-              element.quantity
+              element.quantity,
+              element.product_description
             )
           }
         >

@@ -13,10 +13,11 @@ import GoToMenuBtn from "../../components/GoToMenuBtn";
 function Cart({ order = [], values, setValues, setOrder }) {
   const { toggleLang } = useLanguage();
   const { setShowBasket } = useScrollBasket();
-  const handleChange = (id, newValue, quantityValue) => {
+  const handleChange = (id, newValue, quantityValue, quantity_desc) => {
+    console.log(quantity_desc);
     setValues((prevValues) => ({
       ...prevValues,
-      [id]: Math.max(newValue || 10, 10 /*quantityValue*/),
+      [id]: Math.max(newValue, Number(quantity_desc)),
     }));
   };
 
@@ -120,6 +121,7 @@ function Cart({ order = [], values, setValues, setOrder }) {
     } catch (error) {
       window.alert(error.message);
     }
+    setOrder([]);
   };
 
   return (
