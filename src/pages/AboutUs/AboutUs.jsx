@@ -46,13 +46,13 @@ export default function AboutUs({ order }) {
               <div className="RightSide">
                 <div className="GridContaier">
                   <div className="staffImg1">
-                    <img src={images[6]} alt="staff"></img>
+                    <img src={images[5]} alt="staff"></img>
                   </div>
                   <div className="staffImg2">
-                    <img src={images[4]} alt="staff"></img>
+                    <img src={images[6]} alt="staff"></img>
                   </div>
                   <div className="staffImg3">
-                    <img src={images[1]} alt="staff"></img>
+                    <img src={images[7]} alt="staff"></img>
                   </div>
                 </div>
               </div>
