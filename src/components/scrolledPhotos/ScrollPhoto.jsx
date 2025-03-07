@@ -25,6 +25,7 @@ export default function ScrollPhoto() {
       img.src = src;
     });
   }, [gallery]);
+  console.log("galeri", gallery);
   return (
     <div className="container">
       <div className="row">

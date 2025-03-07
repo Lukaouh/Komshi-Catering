@@ -14,6 +14,7 @@ export default function AboutUs({ order }) {
   useEffect(() => {
     getPhotos(setImages);
   }, []);
+
   return (
     <>
       <Header id={DATA[1].id} order={order} />
