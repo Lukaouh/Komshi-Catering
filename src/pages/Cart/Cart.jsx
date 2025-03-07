@@ -14,7 +14,6 @@ function Cart({ order = [], values, setValues, setOrder }) {
   const { toggleLang } = useLanguage();
   const { setShowBasket } = useScrollBasket();
   const handleChange = (id, newValue, quantityValue, quantity_desc) => {
-    console.log(quantity_desc);
     setValues((prevValues) => ({
       ...prevValues,
       [id]: Math.max(newValue, Number(quantity_desc)),

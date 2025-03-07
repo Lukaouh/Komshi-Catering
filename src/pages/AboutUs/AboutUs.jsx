@@ -15,6 +15,11 @@ export default function AboutUs({ order }) {
     getPhotos(setImages);
   }, []);
 
+  const image1 = images.find((image) => image.id === 14);
+
+  const image2 = images.find((image) => image.id === 16);
+  const image3 = images.find((image) => image.id === 17);
+
   return (
     <>
       <Header id={DATA[1].id} order={order} />
@@ -47,13 +52,13 @@ export default function AboutUs({ order }) {
               <div className="RightSide">
                 <div className="GridContaier">
                   <div className="staffImg1">
-                    <img src={images[5]} alt="staff"></img>
+                    <img src={image1?.image} alt="staff"></img>
                   </div>
                   <div className="staffImg2">
-                    <img src={images[6]} alt="staff"></img>
+                    <img src={image2?.image} alt="staff"></img>
                   </div>
                   <div className="staffImg3">
-                    <img src={images[7]} alt="staff"></img>
+                    <img src={image3?.image} alt="staff"></img>
                   </div>
                 </div>
               </div>

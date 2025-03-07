@@ -4,9 +4,12 @@ import "../scrolledPhotos/ScrollPhoto.css";
 export async function getPhotos(setGallery) {
   try {
     const response = await axios.get("https://komshii.com/api/store/images/");
+
     if (response.status >= 200 && response.status < 300) {
-      const image = response.data.map((item) => item.image);
-      setGallery(image);
+      const images = response.data.map((item) => {
+        return { id: item.id, image: item.image }; // Fixing the syntax
+      });
+      setGallery(images); // Update gallery with fetched images
     }
   } catch (error) {
     window.alert("Failed to fetch images");
@@ -25,14 +28,25 @@ export default function ScrollPhoto() {
       img.src = src;
     });
   }, [gallery]);
-  console.log("galeri", gallery);
+  const image1 = gallery.find((image) => image.id === 2);
+  const image2 = gallery.find((image) => image.id === 9);
+  const image3 = gallery.find((image) => image.id === 11);
+  const image4 = gallery.find((image) => image.id === 8);
+  const image5 = gallery.find((image) => image.id === 13);
+  const imageArr = [
+    image1?.image,
+    image2?.image,
+    image3?.image,
+    image4?.image,
+    image5?.image,
+  ];
   return (
     <div className="container">
       <div className="row">
         <div className="boxContainer">
           <div className="imgSrc">
             <img
-              src={gallery[currentPhoto]}
+              src={imageArr[currentPhoto]}
               className="imgfluid"
               alt="advertisingPhoto"
             />
@@ -49,7 +63,6 @@ export default function ScrollPhoto() {
                   onClick={() => {
                     if (index < gallery.length) {
                       setCurrentPhoto(index);
-                      // console.log(index.id);
                     }
                   }}
                 ></button>
