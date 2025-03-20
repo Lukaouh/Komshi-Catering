@@ -20,6 +20,9 @@
   position: relative;
   width: auto;
   max-width: 640px;
+  max-height: 500px;
+  overflow: hidden;
+  overflow-y: scroll;
   /* margin-top: %; */
 }
 
