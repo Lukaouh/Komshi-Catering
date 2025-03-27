@@ -5,7 +5,6 @@
   z-index: 100;
   opacity: 95%;
   overflow: hidden;
-  transition: 0.5s ease-in;
   background-color: rgb(255, 255, 255);
   border-radius: 0 10px 10px;
 
@@ -15,7 +14,7 @@
 .mobileNavabar {
   position: absolute;
   left: -500px;
-  transition: 1s ease-out;
+  transition: 0.5s ease-out;
 }
 .headerItemsMob {
   width: 100%;
