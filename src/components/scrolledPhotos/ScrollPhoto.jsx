@@ -48,7 +48,7 @@ export default function ScrollPhoto() {
             <img
               src={imageArr[currentPhoto]}
               className="imgfluid"
-              alt="advertisingPhoto"
+              alt="Komshi gallery"
             />
           </div>
           <div className="buttons">

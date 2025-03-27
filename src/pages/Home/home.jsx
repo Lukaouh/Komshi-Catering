@@ -69,7 +69,11 @@ function Home({ order = [], setOrder, values, setValues }) {
             <div className="firstHalf ">
               <div className="content">
                 <h1>
-                  {toggleLang === "ka" ? "დაგეგმე" : "Plan"}
+                  <span className="child0">
+                    {" "}
+                    {toggleLang === "ka" ? "დაგეგმე" : "Plan"}
+                  </span>
+
                   <br />
                   <span className="child1">
                     <span className="child2">
@@ -79,18 +83,27 @@ function Home({ order = [], setOrder, values, setValues }) {
                     {toggleLang === "ka" ? "დღესასწაული" : "celebration"}
                   </span>
                 </h1>
-                <p>
-                  {toggleLang === "ka"
-                    ? "კომპანია „კომში“ გთავაზობთ საკვებით უზრუნველყოფას ნებისმიერი სახის ღონისძიებისთვის"
-                    : " „Komshi“ provides catering services for all types of occasions."}
-                </p>
+                <h2 className="strong">
+                  {toggleLang === "ka" ? (
+                    <>
+                      კომპანია „კომში“ გთავაზობთ საკვებით უზრუნველყოფას
+                      ნებისმიერი სახის ღონისძიებისთვის
+                    </>
+                  ) : (
+                    <>
+                      „Komshi“ provides catering services for all types of
+                      occasions.
+                    </>
+                  )}
+                </h2>
+
                 <div className="buttonMenu">
                   <button onClick={MenuBtn}>
                     {toggleLang === "ka" ? "მენიუ" : "Menu"}
                   </button>
                 </div>
               </div>
-              <img src={komshi2} alt="komshi" />
+              <img src={komshi2} alt="Komshi catering" />
             </div>
             <div className="secondHlf">
               <ScrollPhoto />
@@ -112,11 +125,7 @@ function Home({ order = [], setOrder, values, setValues }) {
       >
         <h1>
           {toggleLang === "ka" ? "მენიუ" : "Menu"}
-          <img
-            src={komshiLogo}
-            alt="Komshi Logo"
-            style={{ paddingLeft: "5px" }}
-          />
+          <img src={komshiLogo} alt="Komshi" style={{ paddingLeft: "5px" }} />
         </h1>
         <p style={{ paddingBottom: "50px", paddingTop: "0" }}>
           {toggleLang === "ka"

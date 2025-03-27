@@ -19,21 +19,36 @@
   width: 100%;
 }
 
-.content h1,
 .menuOnHome h1 {
   color: rgba(124, 124, 124, 1);
   font-size: 38px;
   font-family: mt-bold;
   font-size: 48px;
 }
+.content h1 {
+  line-height: 36px;
+}
+.strong {
+  color: rgba(124, 124, 124, 0.66);
+  font-family: nus-regular;
+  font-size: 24px;
+}
+.child0 {
+  font-size: 38px;
+  color: rgba(124, 124, 124, 1);
+  font-family: mt-bold;
+  margin: 0;
+}
 .child2 {
   color: rgba(107, 170, 169, 1);
   font-size: 28px;
+  font-family: mt-bold;
 }
 
 .child1 {
   color: rgba(124, 124, 124, 1);
   font-size: 28px;
+  font-family: mt-bold;
 }
 .content p,
 .menuOnHome p {
