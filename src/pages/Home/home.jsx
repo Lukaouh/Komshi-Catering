@@ -56,7 +56,6 @@ function Home({ order = [], setOrder, values, setValues }) {
   return (
     <>
       {showBasket && <Basket order={order} setOrder={setOrder} />}
-
       <Header order={order} />
       <div className="mainDiv">
         <div className="styledBackground">
@@ -123,11 +122,14 @@ function Home({ order = [], setOrder, values, setValues }) {
           paddingBottom: "50px",
         }}
       >
-        <h1>
+        <p className="menuHeadingOnHome">
           {toggleLang === "ka" ? "მენიუ" : "Menu"}
           <img src={komshiLogo} alt="Komshi" style={{ paddingLeft: "5px" }} />
-        </h1>
-        <p style={{ paddingBottom: "50px", paddingTop: "0" }}>
+        </p>
+        <p
+          style={{ paddingBottom: "50px", paddingTop: "0" }}
+          className="menuLineOnHome"
+        >
           {toggleLang === "ka"
             ? "ძირითადი მენიუ და შეთავაზებები"
             : "Main Menu and Offers"}

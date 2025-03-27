@@ -13,14 +13,14 @@ function Services() {
         <div className="serviceText">
           {ServiceTexts.map((text, index) => (
             <div key={index}>
-              <h1>
+              <p>
                 {text[`name_${toggleLang}`]}
                 <img
                   src={komshiLogo}
                   alt="Komshi Logo"
                   style={{ paddingLeft: "5px" }}
                 />
-              </h1>
+              </p>
             </div>
           ))}
 

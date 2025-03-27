@@ -19,7 +19,7 @@
   width: 100%;
 }
 
-.menuOnHome h1 {
+.menuHeadingOnHome {
   color: rgba(124, 124, 124, 1);
   font-size: 38px;
   font-family: mt-bold;
@@ -51,7 +51,7 @@
   font-family: mt-bold;
 }
 .content p,
-.menuOnHome p {
+.menuLineOnHome {
   color: rgba(128, 128, 128, 1);
   font-family: nus-regular;
   padding-top: 10px;
